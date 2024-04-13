@@ -85,7 +85,7 @@ const Navbar = () => {
         </div>
       </div>
       {sidebarOpen && (
-        <div className="lg:hidden bg-green-500 mt-6">
+        <div className="lg:hidden border-2 w-[80vw] px-4 py-5 mt-5">
           <nav className="flex flex-col space-y-4 mt-4">
             <a href="#" className="text-gray-800">
               Start a Search
