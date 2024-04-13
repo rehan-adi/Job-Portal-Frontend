@@ -32,7 +32,7 @@ function JobFilter() {
   };
 
   return (
-    <div className="flex justify-between items-start px-24">
+    <div className="flex justify-start gap-24 items-start px-24">
       {/* Filter options on the left */}
       <div className="w-[25vw] px-7 py-5 max-h-fit">
         <h1 className="text-lg mb-8 font-semibold">Filters</h1>
@@ -74,46 +74,51 @@ function JobFilter() {
         </div>
       </div>
       {/* Display filtered jobs on the right */}
-      <div className="w-2/3 bg-white max-h-fit overflow-y-auto">
+      <div className="w-[50vw] bg-white max-h-fit overflow-y-auto">
         <h1 className="text-lg mb-8 font-semibold">
           {" "}
           ({filteredJobs.length})Jobs
         </h1>
         {filteredJobs.map((job, index) => (
-          <div key={index} className="border p-5 mb-4">
-            <h3>{job.companyName}</h3>
-            <h2 className="text-lg mt-1 font-semibold">{job.jobTitle}</h2>
-            <div className="flex items-center my-2 gap-4">
-              <p className="flex justify-center items-center">
-                <strong>
-                  <MdLocationPin className="inline-block mb-1 mr-1" />
-                </strong>{" "}
-                {job.jobLocation}
-              </p>
-              <p className="flex justify-center items-center">
-                <span>
-                  <IoMdTime className="inline-block mb-1 mr-1" />
-                </span>{" "}
-                {job.employmentType}
-              </p>
-              <p className="flex justify-center items-center">
-                <span className="inline-block mr-1">
-                  <FaDollarSign />
-                </span>{" "}
-                {job.minPrice} - {job.maxPrice} {job.salaryType}
-              </p>
-              <p className="flex justify-center items-center">
-                <span>
-                  <BsCalendar3 className="inline-block mr-2 mb-1 text-xs" />
-                </span>{" "}
-                {job.postingDate}
-              </p>
-            </div>
+  <div key={index} className="border p-5 mb-4 flex">
+    <div className="w-1/6">
+      <img src={job.companyLogo} alt={job.companyName} className="w-full h-full" />
+    </div>
+    <div className="w-5/6 ml-4">
+      <h3>{job.companyName}</h3>
+      <h2 className="text-lg mt-1 font-semibold">{job.jobTitle}</h2>
+      <div className="flex items-center my-2 gap-4">
+        <p className="flex justify-center items-center">
+          <strong>
+            <MdLocationPin className="inline-block mb-1 mr-1" />
+          </strong>{" "}
+          {job.jobLocation}
+        </p>
+        <p className="flex justify-center items-center">
+          <span>
+            <IoMdTime className="inline-block mb-1 mr-1" />
+          </span>{" "}
+          {job.employmentType}
+        </p>
+        <p className="flex justify-center items-center">
+          <span className="inline-block mr-1">
+            <FaDollarSign />
+          </span>{" "}
+          {job.minPrice} - {job.maxPrice} {job.salaryType}
+        </p>
+        <p className="flex justify-center items-center">
+          <span>
+            <BsCalendar3 className="inline-block mr-2 mb-1 text-xs" />
+          </span>{" "}
+          {job.postingDate}
+        </p>
+      </div>
+       {/* <p><strong>Experience Level:</strong> {job.experienceLevel}</p> */}
+      <p className="pr-40 opacity-80">{job.description}</p>
+    </div>
+  </div>
+))}
 
-            {/* <p><strong>Experience Level:</strong> {job.experienceLevel}</p> */}
-            <p className="pr-40 opacity-80">{job.description}</p>
-          </div>
-        ))}
       </div>
     </div>
   );
