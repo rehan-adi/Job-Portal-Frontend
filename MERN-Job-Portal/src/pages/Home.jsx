@@ -1,8 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Banner from '../components/Banner'
 
 function Home() {
+
+  const [jobRole, setJobRole] = useState('');
+  
+    const handleJobRoleChange = (event) => {
+      setJobRole(event.target.value);
+    };
+
   return (
-    <div>Home page</div>
+    <div>
+      <Banner query={jobRole} handleJobRoleChange={handleJobRoleChange}/>
+    </div>
   )
 }
 
