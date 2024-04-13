@@ -1,4 +1,3 @@
-// JobFilter.js
 import React, { useEffect, useState } from 'react';
 
 function JobFilter() {
@@ -11,17 +10,15 @@ function JobFilter() {
       .then(res => res.json())
       .then(data => {
         setJobs(data);
-        setFilteredJobs(data); // Initialize filtered jobs with all jobs initially
+        setFilteredJobs(data);
       });
   }, []);
 
   useEffect(() => {
     if (selectedCategory) {
-      // Filter jobs based on selected category
-      const filtered = jobs.filter(job => job.category === selectedCategory);
+      const filtered = jobs.filter(job => job.jobTitle === selectedCategory);
       setFilteredJobs(filtered);
     } else {
-      // If no category selected, show all jobs
       setFilteredJobs(jobs);
     }
   }, [selectedCategory, jobs]);
@@ -32,7 +29,6 @@ function JobFilter() {
 
   return (
     <div>
-      {/* Radio buttons for selecting category */}
       <div>
         <input
           type="radio"
@@ -49,26 +45,26 @@ function JobFilter() {
           type="radio"
           id="category-tech"
           name="category"
-          value="Tech"
-          checked={selectedCategory === "Tech"}
+          value="Software Engineer"
+          checked={selectedCategory === "Software Engineer"}
           onChange={handleCategoryChange}
         />
-        <label htmlFor="category-tech">Tech</label>
+        <label htmlFor="category-tech">Software Engineer</label>
       </div>
       <div>
         <input
           type="radio"
           id="category-engineering"
           name="category"
-          value="Engineering"
-          checked={selectedCategory === "Engineering"}
+          value="Web Developer"
+          checked={selectedCategory === "Web Developer"}
           onChange={handleCategoryChange}
         />
-        <label htmlFor="category-engineering">Engineering</label>
+        <label htmlFor="category-engineering">Web Developer</label>
       </div>
       {/* Render filtered jobs */}
-      {filteredJobs.map(job => (
-        <div key={job.id}>
+      {filteredJobs.map((job, index) => (
+        <div key={index}>
           <h2>{job.jobTitle}</h2>
           <p>{job.jobDescription}</p>
         </div>
