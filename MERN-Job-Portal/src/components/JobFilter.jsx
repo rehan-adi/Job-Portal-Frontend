@@ -4,7 +4,7 @@ import { IoMdTime } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
 
-function JobFilter() {
+function JobFilter({ searchQuery }) {
   const [jobs, setJobs] = useState([]);
   const [filteredJobs, setFilteredJobs] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -20,15 +20,27 @@ function JobFilter() {
   }, []);
 
   useEffect(() => {
+    console.log("Search Query:", searchQuery); // Add console log for search query
     let filtered = jobs;
     if (selectedCategory) {
       filtered = filtered.filter((job) => job.jobTitle === selectedCategory);
     }
     if (selectedExperienceLevel) {
-      filtered = filtered.filter((job) => job.experienceLevel === selectedExperienceLevel);
+      filtered = filtered.filter(
+        (job) => job.experienceLevel === selectedExperienceLevel
+      );
     }
+
+    if (searchQuery) {
+      filtered = filtered.filter((job) =>
+        job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    console.log("Filtered Jobs:", filtered); // Add console log for filtered jobs
+
     setFilteredJobs(filtered);
-  }, [selectedCategory, selectedExperienceLevel, jobs]);
+  }, [selectedCategory, selectedExperienceLevel, searchQuery, jobs]);
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -134,7 +146,11 @@ function JobFilter() {
         {filteredJobs.map((job, index) => (
           <div key={index} className="border p-5 mb-4 flex">
             <div className="w-1/6">
-              <img src={job.companyLogo} alt={job.companyName} className="w-[4vw] h-[4vw]" />
+              <img
+                src={job.companyLogo}
+                alt={job.companyName}
+                className="w-[4vw] h-[4vw]"
+              />
             </div>
             <div className="w-5/6">
               <h3>{job.companyName}</h3>
@@ -175,3 +191,4 @@ function JobFilter() {
 }
 
 export default JobFilter;
+

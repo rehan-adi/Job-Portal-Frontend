@@ -4,16 +4,16 @@ import JobFilter from '../components/JobFilter';
 
 function Home() {
 
-  const [jobRole, setJobRole] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
-    const handleJobRoleChange = (event) => {
-      setJobRole(event.target.value);
-    };
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
 
   return (
     <div>
-      <Banner jobRole={jobRole} handleJobRoleChange={handleJobRoleChange}/>
-      <JobFilter />
+      <Banner onSearch={handleSearch}/>
+      <JobFilter searchQuery={searchQuery}/>
     </div>
   )
 }

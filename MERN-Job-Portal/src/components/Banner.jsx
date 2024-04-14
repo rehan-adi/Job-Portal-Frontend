@@ -2,17 +2,19 @@ import React, { useState } from 'react'
 import { FaSearch, FaMapMarkerAlt } from 'react-icons/fa';
 
 
-function Banner({jobRole, handleJobRoleChange}) {
+function Banner({onSearch}) {
 
-    const [location, setLocation] = useState('');
+    const [jobRole, setJobRole] = useState('');
+    // const [location, setLocation] = useState('');
   
-    const handleLocationChange = (event) => {
-      setLocation(event.target.value);
+    const handleJobRoleChange = (event) => {
+      setJobRole(event.target.value);
     };
-  
+
     const handleSearch = (event) => {
       event.preventDefault();
-      console.log('Searching for:', jobRole, 'in', location);
+      const searchQuery = `${jobRole}`.trim();
+      onSearch(searchQuery);
     };
 
   return (
@@ -35,8 +37,8 @@ function Banner({jobRole, handleJobRoleChange}) {
             <input
               type="text"
               placeholder="Enter Location"
-            //   value={location}
-            //   onChange={handleLocationChange}
+              // value={location}
+              // onChange={handleLocationChange}
               className=" w-[80vw] lg:w-[37vw] px-12 py-2 border-2 lg:border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
             />
           </div>
