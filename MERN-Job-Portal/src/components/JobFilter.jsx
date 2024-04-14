@@ -49,11 +49,11 @@ function JobFilter({ searchQuery }) {
   };
 
   return (
-    <div className="flex justify-start gap-24 items-start px-24">
+    <div className="flex lg:justify-start justify-center gap-24 items-start lg:px-24">
       {/* Filter options on the left */}
-      <div className="w-[25vw] px-7 py-5 max-h-fit">
+      <div className="w-[25vw] lg:flex flex-col hidden px-7 py-3 max-h-fit">
         <h1 className="text-lg mb-8 font-semibold">Filters</h1>
-        <div className="px-2 py-5">
+        <div className="px-2 py-3">
           <h1 className="mb-3 font-semibold">Job Role</h1>
           <div className="mb-2">
             <input
@@ -136,13 +136,13 @@ function JobFilter({ searchQuery }) {
         </div>
       </div>
       {/* Display filtered jobs on the right */}
-      <div className="w-[50vw] bg-white max-h-fit overflow-y-auto">
+      <div className="lg:w-[50vw] w-[90vw] bg-white max-h-fit overflow-y-auto">
         <h1 className="text-lg mb-8 font-semibold">
           {" "}
           ({filteredJobs.length})Jobs
         </h1>
         {filteredJobs.map((job, index) => (
-          <div key={index} className="border p-5 mb-4 flex">
+          <div key={index} className="lg:border border-2 p-5 mb-4 flex-col lg:flex-row flex">
             <div className="w-1/6">
               <img
                 src={job.companyLogo}
@@ -151,9 +151,9 @@ function JobFilter({ searchQuery }) {
               />
             </div>
             <div className="w-5/6">
-              <h3>{job.companyName}</h3>
+              <h3 className="mt-3 lg:mt-0">{job.companyName}</h3>
               <h2 className="text-lg mt-1 font-semibold">{job.jobTitle}</h2>
-              <div className="flex items-center my-2 gap-4">
+              <div className="flex flex-wrap items-center my-2 gap-4">
                 <p className="flex justify-center items-center">
                   <strong>
                     <MdLocationPin className="inline-block mb-1 mr-1" />
@@ -179,7 +179,7 @@ function JobFilter({ searchQuery }) {
                   {job.postingDate}
                 </p>
               </div>
-              <p className="pr-40 opacity-80">{job.description}</p>
+              <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.description}</p>
             </div>
           </div>
         ))}
