@@ -37,8 +37,6 @@ function JobFilter({ searchQuery }) {
       );
     }
 
-    console.log("Filtered Jobs:", filtered); // Add console log for filtered jobs
-
     setFilteredJobs(filtered);
   }, [selectedCategory, selectedExperienceLevel, searchQuery, jobs]);
 
