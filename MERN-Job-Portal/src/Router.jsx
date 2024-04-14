@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from './pages/Home'
 import MyJobs from './pages/MyJobs'
+import PostJobForm from "./components/PostJobForm";
 
 const router = createBrowserRouter([
     {
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
           element: <MyJobs />,
         },
         {
-          path: "/contact",
-          element: <h1>Contact</h1>,
+          path: "/postjob",
+          element: <PostJobForm />,
         },
         {
           path: "*",

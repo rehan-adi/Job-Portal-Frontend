@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -21,18 +22,10 @@ const Navbar = () => {
           </div>
         </div>
         <nav className="hidden lg:flex flex-grow justify-center items-center space-x-14">
-          <a href="#" className="text-blue-700">
-            Start a Search
-          </a>
-          <a href="#" className="text-gray-800">
-            My Jobs
-          </a>
-          <a href="#" className="text-gray-800">
-            Salary Estimate
-          </a>
-          <a href="#" className="text-gray-800">
-            Post a Job
-          </a>
+          <Link to="/" className="text-blue-700">Start a Search</Link>
+          <Link to="/my-jobs" className="text-gray-800">My Jobs</Link>
+          <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
+          <Link to="/postjob" className="text-gray-800">Post a Job</Link>
         </nav>
         <div className="lg:hidden">
           <button onClick={toggleSidebar} className="text-gray-800">
@@ -87,18 +80,10 @@ const Navbar = () => {
       {sidebarOpen && (
         <div className="lg:hidden border-2 w-[80vw] px-4 py-5 mt-5">
           <nav className="flex flex-col space-y-4 mt-4">
-            <a href="#" className="text-gray-800">
-              Start a Search
-            </a>
-            <a href="#" className="text-gray-800">
-              My Jobs
-            </a>
-            <a href="#" className="text-gray-800">
-              Salary Estimate
-            </a>
-            <a href="#" className="text-gray-800">
-              Post a Job
-            </a>
+            <Link to="/" className="text-gray-800">Start a Search</Link>
+            <Link to="/my-jobs" className="text-gray-800">My Jobs</Link>
+            <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
+            <Link to="/postjob" className="text-gray-800">Post a Job</Link>
           </nav>
           <div className="lg:hidden flex mt-5 items-center space-x-8">
           <a
