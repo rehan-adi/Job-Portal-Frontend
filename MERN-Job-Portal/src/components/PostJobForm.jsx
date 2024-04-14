@@ -119,7 +119,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="postingDate"
               placeholder="Posting Date"
-              className="border-gray-300 border p-2 w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border px-2 py-[6px] w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
             />
           </div>
           <div className="mb-4">
