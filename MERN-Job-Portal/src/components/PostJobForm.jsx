@@ -31,8 +31,7 @@ function PostJobForm() {
   };
 
   return (
-    <div className="bg-white p-8">
-      <h2 className="text-2xl font-semibold mb-4">Post a Job</h2>
+    <div className="px-8 py-4">
       <form className='bg-white py-16 flex justify-between items-center flex-col' onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
@@ -138,16 +137,20 @@ function PostJobForm() {
             </select>
           </div>
           <div className="mb-4">
-            <label htmlFor="requiredSkills" className="block text-sm mb-2 font-medium text-gray-700">Required Skills</label>
-            <input
-              type="text"
-              name="requiredSkills"
-              value={formData.requiredSkills}
+            <label htmlFor="employmentType" className="block text-sm mb-2 font-medium text-gray-700">Employment Type</label>
+            <select
+              name="employmentType"
+              value={formData.employmentType}
               onChange={handleChange}
-              id="requiredSkills"
-              placeholder="Required Skills"
-              className="border-gray-300 border p-2 rounded-md focus:outline-none focus:border-blue-500"
-            />
+              id="employmentType"
+              className="border-gray-300 border p-2 w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+            >
+              <option value="">Select Employment Type</option>
+              <option value="Full-time">Full-time</option>
+              <option value="Part-time">Part-time</option>
+              <option value="Contract">Contract</option>
+              <option value="Freelance">Freelance</option>
+            </select>
           </div>
           <div className="mb-4">
             <label htmlFor="companyLogo" className="block text-sm mb-2 font-medium text-gray-700">Company Logo URL</label>
@@ -158,26 +161,23 @@ function PostJobForm() {
               onChange={handleChange}
               id="companyLogo"
               placeholder="Company Logo URL"
-              className="border-gray-300 border p-2 rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
             />
           </div>
-          <div className="mb-4">
-            <label htmlFor="employmentType" className="block text-sm mb-2 font-medium text-gray-700">Employment Type</label>
-            <select
-              name="employmentType"
-              value={formData.employmentType}
+        </div>
+        <div className="mb-4">
+         <label htmlFor="requiredSkills" className="block text-sm mb-2 font-medium text-gray-700">Required Skills</label>
+            <input
+              type="text"
+              name="requiredSkills"
+              value={formData.requiredSkills}
               onChange={handleChange}
-              id="employmentType"
-              className="border-gray-300 border p-2 rounded-md focus:outline-none focus:border-blue-500"
-            >
-              <option value="">Select Employment Type</option>
-              <option value="Full-time">Full-time</option>
-              <option value="Part-time">Part-time</option>
-              <option value="Contract">Contract</option>
-              <option value="Freelance">Freelance</option>
-            </select>
+              id="requiredSkills"
+              placeholder="Required Skills"
+              className="border-gray-300 border p-2 w-[81vw] rounded-md focus:outline-none focus:border-blue-500"
+            />
           </div>
-          <div className="mb-4 col-span-2">
+        <div className="mb-4">
             <label htmlFor="jobDescription" className="block text-sm mb-2 font-medium text-gray-700">Job Description</label>
             <textarea
               name="jobDescription"
@@ -185,13 +185,14 @@ function PostJobForm() {
               onChange={handleChange}
               id="jobDescription"
               placeholder="Job Description"
-              className="border-gray-300 border p-2 rounded-md focus:outline-none focus:border-blue-500 resize-none h-32"
+              className="border-gray-300 border p-2 w-[81vw] rounded-md focus:outline-none focus:border-blue-500 resize-none h-32"
             />
           </div>
-        </div>
-        <button type="submit" className="bg-blue-500 text-white rounded-md py-2 px-4 mt-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+       <div className='w-full px-28'>
+       <button type="submit" className="bg-blue-500 text-white rounded-md py-2 px-6 mt-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
           Submit
         </button>
+       </div>
       </form>
     </div>
   );
