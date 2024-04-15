@@ -148,7 +148,7 @@ function PostJobForm() {
               <option value="">Select Employment Type</option>
               <option value="Full-time">Full-time</option>
               <option value="Part-time">Part-time</option>
-              <option value="Contract">Contract</option>
+              <option value="Contract">internship</option>
               <option value="Freelance">Freelance</option>
             </select>
           </div>
