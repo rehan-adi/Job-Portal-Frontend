@@ -3,6 +3,7 @@ import { MdLocationPin } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
+import axios from 'axios'
 
 function JobFilter({ searchQuery }) {
   const [jobs, setJobs] = useState([]);
@@ -11,17 +12,27 @@ function JobFilter({ searchQuery }) {
   const [selectedExperienceLevel, setSelectedExperienceLevel] = useState(null);
 
   useEffect(() => {
-    fetch("jobs.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
-        setFilteredJobs(data);
-      });
+    const fetchJobs = async () => {
+      try {
+        const response = await axios.get("http://localhost:1000/postjob/");
+        if (Array.isArray(response.data.jobs)) {
+          setJobs(response.data.jobs);
+          setFilteredJobs(response.data.jobs); 
+        } else {
+          console.error("Invalid response data:", response.data);
+        }
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+      }
+    };
+  
+    fetchJobs();
   }, []);
+  
 
   useEffect(() => {
     console.log("Search Query:", searchQuery); // Add console log for search query
-    let filtered = jobs;
+    let filtered = [...jobs];
     if (selectedCategory) {
       filtered = filtered.filter((job) => job.jobTitle === selectedCategory);
     }
@@ -30,15 +41,15 @@ function JobFilter({ searchQuery }) {
         (job) => job.experienceLevel === selectedExperienceLevel
       );
     }
-
+  
     if (searchQuery) {
       filtered = filtered.filter((job) =>
         job.jobTitle.toLowerCase().includes(searchQuery.toLowerCase())
       );
     }
-
+  
     setFilteredJobs(filtered);
-  }, [selectedCategory, selectedExperienceLevel, searchQuery, jobs]);
+  }, [selectedCategory, selectedExperienceLevel, searchQuery, jobs]);  
 
   const handleCategoryChange = (event) => {
     setSelectedCategory(event.target.value);
@@ -141,7 +152,7 @@ function JobFilter({ searchQuery }) {
           {" "}
           ({filteredJobs.length})Jobs
         </h1>
-        {filteredJobs.map((job, index) => (
+        {filteredJobs.map((job, index)  => (
           <div key={index} className="lg:border border-2 p-5 mb-4 flex-col lg:flex-row flex">
             <div className="w-1/6">
               <img

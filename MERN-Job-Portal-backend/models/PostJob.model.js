@@ -23,7 +23,7 @@ const postJobSchema = mongoose.Schema({
     required: true,
   },
   requiredSkills: { type: [String], required: true },
-  companyUrl: { type: String, required: true },
+  companyUrl: { type: String },
   jobDescription: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },

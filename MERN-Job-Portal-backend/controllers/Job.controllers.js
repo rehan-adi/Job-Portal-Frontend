@@ -41,3 +41,14 @@ export const createJob = async (req, res) => {
     }
 };
 
+export const getJobs = async(req, res) => {
+    try {
+        const jobs = await postJobModel.find();
+        return res.status(200).json({ message: 'Showing jobs', jobs });
+        console.log(jobs);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+        console.log('Failed to fetch jobs', error);
+    }
+}
+
