@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function PostJobForm() {
   const [formData, setFormData] = useState({
@@ -24,10 +25,15 @@ function PostJobForm() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Send formData to backend here
     console.log(formData);
+    try {
+      const response = await axios.post("http://localhost:1000/postjob/", formData);
+      console.log("Response from backend:", response.data);
+  } catch (error) {
+      console.error("Error sending data to backend:", error);
+  }
   };
 
   return (
