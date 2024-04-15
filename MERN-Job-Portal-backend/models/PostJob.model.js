@@ -7,11 +7,11 @@ const postJobSchema = mongoose.Schema({
   maxSalary: { type: Number, required: true },
   salaryType: {
     type: String,
-    enum: ["Hourly", "Monthly", "Yeray",],
+    enum: ["Hourly", "Monthly", "Yearly",],
     required: true,
   },
   jobLocation: { type: String, required: true },
-  postingDate: { type: Date, default: Date.now },
+  postingDate: { type: Date,},
   experienceLevel: {
     type: String,
     enum: ["Entry Level", "Mid Level", "Senior Level"],
@@ -19,7 +19,7 @@ const postJobSchema = mongoose.Schema({
   },
   employmentType: {
     type: String,
-    enum: ["Full-time", "Part-time", "internship", "Freelance"],
+    enum: ["Full-time", "Part-time", "Internship", "Freelance", "Contract"],
     required: true,
   },
   requiredSkills: { type: [String], required: true },

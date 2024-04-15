@@ -156,7 +156,7 @@ function JobFilter({ searchQuery }) {
           <div key={index} className="lg:border border-2 p-5 mb-4 flex-col lg:flex-row flex">
             <div className="w-1/6">
               <img
-                src={job.companyLogo}
+                src={job.companyUrl}
                 alt={job.companyName}
                 className="w-[4vw] h-[4vw]"
               />
@@ -190,7 +190,7 @@ function JobFilter({ searchQuery }) {
                   {job.postingDate}
                 </p>
               </div>
-              <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.description}</p>
+              <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.jobDescription}</p>
             </div>
           </div>
         ))}
