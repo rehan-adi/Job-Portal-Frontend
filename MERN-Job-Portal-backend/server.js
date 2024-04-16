@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import postJob from './routes/Job.routs.js'
+import authRoute from './routes/Auth.routs.js'
 import cors from 'cors'
 
 dotenv.config();
@@ -18,11 +19,8 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.error('Error connecting to MongoDB:', error);
 });
 
-server.get('/', (req, res) => {
-    res.send('Hello World!');
-}),
-
 server.use('/postjob', postJob);
+server.use('/auth', authRoute);
 
 server.listen(process.env.PORT || 1000, () => {
     console.log(`Server listening on port ${process.env.PORT}`);

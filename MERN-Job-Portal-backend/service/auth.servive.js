@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
-import User from '../models/User';
+import User from '../models/User.js';
 
-export const authenticate = async (email, password) => {
+const authenticate = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user) {
     throw new Error('Invalid credentials');
@@ -12,3 +12,5 @@ export const authenticate = async (email, password) => {
   }
   return user;
 };
+
+export default authenticate;
