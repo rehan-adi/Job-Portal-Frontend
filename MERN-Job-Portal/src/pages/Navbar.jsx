@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
-const Navbar = () => {
+const Navbar = ({ authenticated }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -63,18 +63,32 @@ const Navbar = () => {
           </button>
         </div>
         <div className="hidden lg:flex items-center space-x-8">
-          <a
-            href="#"
-            className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
-          >
-            Login
-          </a>
-          <a
-            href="#"
-            className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
-          >
-            Sign Up
-          </a>
+        {authenticated ? (
+            <>
+              <Link
+                to="/logout"
+                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+              >
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+
         </div>
       </div>
       {sidebarOpen && (

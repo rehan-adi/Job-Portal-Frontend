@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
+  const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const token = (email, password);
-      // Save token to localStorage
+
+      const response = await axios.post('http://localhost:1000/auth/login', {
+        email: email,
+        password: password
+      });
+
+      const token = response.data.token;
       localStorage.setItem('token', token);
-      // Redirect to dashboard or protected route
+      navigate('/')
+
     } catch (error) {
       setError(error.message);
     }
