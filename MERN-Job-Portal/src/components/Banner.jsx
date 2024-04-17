@@ -21,7 +21,7 @@ function Banner({onSearch}) {
     <div className='w-full py-14 max-h-fit px-10 lg:px-24'>
         <h1 className='text-4xl font-semibold mb-3'>Find your <span className='text-blue-600'>new job</span> today</h1>
         <p>Thousand of jobs in the computer, engineering and technology sectors are waiting for you.</p>
-        <form onSubmit={handleSearch} className="mt-6 flex lg:gap-2 gap-5 flex-col lg:flex-row">
+        <form onSubmit={handleSearch} className="mt-6 flex lg:gap-2 z-10 gap-5 flex-col lg:flex-row">
           <div className="relative flex">
           <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             <input

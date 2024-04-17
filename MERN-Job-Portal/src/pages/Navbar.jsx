@@ -15,7 +15,7 @@ const Navbar = ({ authenticated, onLogout }) => {
   };
 
   return (
-    <header className="bg-white fixed shadow-lg w-full py-5 lg:px-24 px-10">
+    <header className="bg-white fixed shadow-lg w-full z-50 py-5 lg:px-24 px-10">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
