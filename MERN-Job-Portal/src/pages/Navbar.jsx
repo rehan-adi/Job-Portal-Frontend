@@ -105,7 +105,7 @@ const Navbar = ({ authenticated, onLogout }) => {
             <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
             <Link to="/postjob" className="text-gray-800">Post a Job</Link>
           </nav>
-          <divvv className="lg:hidden flex mt-5 items-center space-x-8">
+          <div className="lg:hidden flex mt-5 items-center space-x-8">
           {authenticated ? (
             <>
               <Link
@@ -132,7 +132,7 @@ const Navbar = ({ authenticated, onLogout }) => {
               </Link>
             </>
           )}
-        </divvv>
+        </div>
         </div>
       )}
     </header>

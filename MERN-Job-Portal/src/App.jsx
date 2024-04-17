@@ -6,6 +6,7 @@ import MyJobs from './pages/MyJobs';
 import PostJobForm from './components/PostJobForm';
 import Login from './components/Login';
 import { isAuthenticated } from './auth/auth.js'; 
+import SignUp from './components/SignUp.jsx';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -43,6 +44,7 @@ function App() {
         <Route path="/my-jobs" element={<MyJobs />} />
         <Route path="/postjob" element={<PostJobForm />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </>
