@@ -15,7 +15,6 @@ function App() {
     setAuthenticated(authenticatedUser);
   }, []);
 
-  // Move useNavigate inside the Router component
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -24,9 +23,15 @@ function App() {
     }
   }, [authenticated, navigate]);
 
+  const handleLogout = () => {
+    setAuthenticated(false);
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   return (
     <>
-      <Navbar authenticated={authenticated} />
+      <Navbar authenticated={authenticated} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/my-jobs" element={<MyJobs />} />

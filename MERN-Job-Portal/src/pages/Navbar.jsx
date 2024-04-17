@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ authenticated }) => {
+const Navbar = ({ authenticated, onLogout }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const navigate = useNavigate(); 
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
+  };
+
+  const handleLogout = () => {
+    onLogout();
+    navigate('/login');
   };
 
   return (
@@ -67,7 +73,8 @@ const Navbar = ({ authenticated }) => {
             <>
               <Link
                 to="/logout"
-                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+                onClick={handleLogout}
+                className="bg-blue-600 text-white rounded-sm border px-5 py-1 font-semibold"
               >
                 Logout
               </Link>
