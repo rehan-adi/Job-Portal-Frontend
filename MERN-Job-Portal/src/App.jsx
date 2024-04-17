@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (!authenticated) {
-      navigate('/login');
+      navigate('/login') && navigate('/signup');
     }
   }, [authenticated, navigate]);
 
