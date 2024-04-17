@@ -28,9 +28,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center max-h-fit py-[133px] bg-gray-100">
-      <div className="bg-white shadow-md rounded-lg px-32 py-10">
-        <h2 className="text-3xl text-center mb-8">Login</h2>
+    <div className="flex justify-center items-center max-h-fit py-[110px] bg-gray-100">
+      <div className="bg-white shadow-md rounded-lg lg:px-32 px-20 py-10">
+        <h2 className="text-2xl font-semibold text-center mb-8">Login</h2>
         <form onSubmit={handleSubmit} className="mb-6">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -62,13 +62,13 @@ const Login = () => {
           </div>
           <div className="flex items-center justify-between">
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
               Login
             </button>
-            <Link to="/signup" className="text-blue-500 text-sm hover:underline">Sign Up</Link>
           </div>
+          <p className='mt-8'>Don't have an account <Link to="/signup" className="text-blue-500 underline text-sm font-semibold hover:underline">Sign Up</Link> </p>
         </form>
         {error && <p className="text-red-500 text-xs italic">{error}</p>}
       </div>

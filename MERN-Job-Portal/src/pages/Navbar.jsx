@@ -15,7 +15,7 @@ const Navbar = ({ authenticated, onLogout }) => {
   };
 
   return (
-    <header className="bg-white shadow-lg w-full py-5 lg:px-24 px-10">
+    <header className="bg-white fixed shadow-lg w-full py-5 lg:px-24 px-10">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
@@ -95,7 +95,6 @@ const Navbar = ({ authenticated, onLogout }) => {
               </Link>
             </>
           )}
-
         </div>
       </div>
       {sidebarOpen && (
@@ -106,20 +105,34 @@ const Navbar = ({ authenticated, onLogout }) => {
             <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
             <Link to="/postjob" className="text-gray-800">Post a Job</Link>
           </nav>
-          <div className="lg:hidden flex mt-5 items-center space-x-8">
-          <a
-            href="#"
-            className="text-gray-800 bg-white rounded-sm border-2 px-5 py-1 font-semibold"
-          >
-            Login
-          </a>
-          <a
-            href="#"
-            className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
-          >
-            Sign Up
-          </a>
-        </div>
+          <divvv className="lg:hidden flex mt-5 items-center space-x-8">
+          {authenticated ? (
+            <>
+              <Link
+                to="/logout"
+                onClick={handleLogout}
+                className="bg-blue-600 text-white rounded-sm border px-5 py-1 font-semibold"
+              >
+                Logout
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to="/login"
+                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+              >
+                Login
+              </Link>
+              <Link
+                to="/signup"
+                className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+        </divvv>
         </div>
       )}
     </header>

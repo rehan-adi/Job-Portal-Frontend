@@ -26,7 +26,13 @@ function App() {
   const handleLogout = () => {
     setAuthenticated(false);
     localStorage.removeItem('token');
-    navigate('/login');
+    if(localStorage.removeItem){
+      navigate('/login');
+    }
+    else{
+      localStorage.setItem('token', token);
+      navigate('/')
+    }
   };
 
   return (

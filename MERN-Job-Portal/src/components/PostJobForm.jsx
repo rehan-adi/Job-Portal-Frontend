@@ -37,7 +37,7 @@ function PostJobForm() {
   };
 
   return (
-    <div className="lg:px-8 py-4">
+    <div className="lg:px-8  py-20">
       <form className='bg-white py-12 lg:py-16 flex justify-between items-center flex-col' onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
