@@ -16,7 +16,7 @@ export const createJob = async (req, res) => {
             jobLocation,
             postingDate,
             experienceLevel,
-            employmentType,
+            employmentType, 
             requiredSkills,
             companyLogo,
             jobDescription,
@@ -71,11 +71,11 @@ export const getJobs = async(req, res) => {
 
 export const getJobDetails = async (req, res) => {
     const { ObjectId } = mongoose.Types;
-    console.log('Received job ID:', req.params.id);
+    // console.log('Received job ID:', req.params.id);
 
     try {
         const job = await postJobModel.findOne({
-            _id: new ObjectId(jobId, { suppressWarning: true }),
+            _id: new ObjectId(req.params.id),
         });
 
         if (!job) {

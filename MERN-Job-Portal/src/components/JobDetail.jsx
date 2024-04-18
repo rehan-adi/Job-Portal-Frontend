@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { MdLocationPin } from "react-icons/md";
+import { FaBusinessTime } from "react-icons/fa6";
+import { FaLevelUpAlt } from "react-icons/fa";
+import { MdAttachMoney } from "react-icons/md";
+import { IoMdTime } from "react-icons/io";
 
 function JobDetail() {
   const { id } = useParams();
@@ -25,10 +30,26 @@ function JobDetail() {
   }
 
   return (
-    <div className='w-full h-screen bg-red-950 py-28'>
-      <h1>Hiiiiiiiiiiiiiiiiiii</h1>
-      <h1>{job.jobTitle}</h1>
-      <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.jobDescription}</p>
+    <div className='w-full h-screen bg-[#f8f9fa] px-28 py-28'>
+      <h1 className='font-semibold text-4xl '>Job <span className='text-blue-600'>Details</span></h1>
+      <div className='mt-10 shadow-md py-6 px-6 rounded-xl w-[55vw]'>
+      <h1 className='font-semibold text-lg'>{job.jobTitle}</h1>
+      <h1 className='font-semibold text-gray-600'>{job.companyName}</h1>
+      <div className='flex mt-4 gap-5'>
+      <p><span><MdAttachMoney className='inline-block text-lg mb-1 mr-1'/></span>{job.salaryType}</p>
+      {/* <p><span>Salary Type : </span>{job.salaryType}</p> */}
+      <p><span><FaLevelUpAlt className='inline-block mb-1 mr-1' /></span>{job.experienceLevel}</p>
+      <p><span><FaBusinessTime className='inline-block mb-1 mr-1'/></span>{job.employmentType}</p>
+      <p><span><MdLocationPin className='inline-block mb-1 mr-1' /></span>{job.jobLocation}</p>
+      </div>
+      <p className="lg:pr-40 w-[70vw] mt-4 lg:w-auto opacity-80">{job.jobDescription}</p>
+      <div className='border-b w-[40vw] py-3'></div>
+      <div className='mt-5 flex gap-5'>
+         <p className=''><span><IoMdTime className='inline-block mb-1 mr-1'/></span><span>Posted: </span>{job.postingDate}</p>
+         <p><span className='mr-2'>Posted By: </span>{job.email}</p>
+         {/* <p>{job.requiredSkills}</p> */}
+      </div>
+      </div>
     </div>
   );
 }
