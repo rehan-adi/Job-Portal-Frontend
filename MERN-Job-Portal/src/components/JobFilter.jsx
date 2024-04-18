@@ -163,7 +163,7 @@ function JobFilter({ searchQuery }) {
               />
             </div>
             <div className="w-5/6">
-            <Link to={`/jobs/${job._id}`} className="text-blue-600 hover:underline">
+            <Link to={`/jobs/${job._id}`}>
               <h3 className="mt-3 lg:mt-0">{job.companyName}</h3>
               <h2 className="text-lg mt-1 font-semibold">{job.jobTitle}</h2>
               <div className="flex flex-wrap items-center my-2 gap-4">
@@ -189,7 +189,7 @@ function JobFilter({ searchQuery }) {
                   <span>
                     <BsCalendar3 className="inline-block mr-2 mb-1 text-xs" />
                   </span>{" "}
-                  {job.postingDate}
+                  {new Date(job.createdAt).toLocaleDateString()}
                 </p>
               </div>
               <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.jobDescription}</p>

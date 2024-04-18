@@ -5,7 +5,7 @@ import { MdLocationPin } from "react-icons/md";
 import { FaBusinessTime } from "react-icons/fa6";
 import { FaLevelUpAlt } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
-import { IoMdTime } from "react-icons/io";
+import { BsCalendar3 } from "react-icons/bs";
 import { FaLaptopCode } from "react-icons/fa";
 
 function JobDetail() {
@@ -44,11 +44,11 @@ function JobDetail() {
       <p><span><MdLocationPin className='inline-block mb-1 mr-1' /></span>{job.jobLocation}</p>
       </div>
       <p className="lg:pr-24 w-[70vw] mt-4 lg:w-auto opacity-80">{job.jobDescription}</p>
-      <div className='border-b w-[40vw] py-3'></div>
+      <div className='border-b w-[47vw] py-3'></div>
       <div className='mt-5 flex gap-5'>
-         <p className=''><span><IoMdTime className='inline-block mb-1 mr-1'/></span><span>Posted: </span>{job.postingDate}</p>
+         <p className=''><span><BsCalendar3 className='inline-block text-xs mb-1 mr-3'/></span><span>Posted: </span>{new Date(job.createdAt).toLocaleDateString()}</p>
          <div className='border'></div>
-         <p><span className='mr-2'>Posted By: </span>{job.email}</p>
+         <p><span className='mr-1'>Posted By: </span>{job.email}</p>
       </div>
          <p className='mt-2'><span><FaLaptopCode  className='inline-block mr-1 mb-1'/> <span className='mr-2'>Skills: </span> </span>{job.requiredSkills}</p>
       </div>

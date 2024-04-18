@@ -11,13 +11,6 @@ const postJobSchema = mongoose.Schema({
     required: true,
   },
   jobLocation: { type: String, required: true },
-  postingDate: {
-    type: Date,
-    get: (v) => {
-      if (!v) return null;
-      return v.toISOString().slice(0, 19).replace("T", " ");
-    }
-  },
   experienceLevel: {
     type: String,
     enum: ["Entry Level", "Mid Level", "Senior Level"],
