@@ -74,7 +74,7 @@ const Navbar = ({ authenticated, onLogout }) => {
               <Link
                 to="/logout"
                 onClick={handleLogout}
-                className="bg-blue-600 text-white rounded-sm border px-5 py-1 font-semibold"
+                className="bg-white border-[#F05537] text-[#F05537] rounded-sm border px-5 py-1 font-semibold"
               >
                 Logout
               </Link>
@@ -83,13 +83,13 @@ const Navbar = ({ authenticated, onLogout }) => {
             <>
               <Link
                 to="/login"
-                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+                className="text-blue-700 bg-white rounded-sm border-blue-700 border px-5 py-1 font-semibold"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
+                className="text-white bg-[#F05537] rounded-sm px-5 py-1 font-semibold"
               >
                 Sign Up
               </Link>
@@ -111,7 +111,7 @@ const Navbar = ({ authenticated, onLogout }) => {
               <Link
                 to="/logout"
                 onClick={handleLogout}
-                className="bg-blue-600 text-white rounded-sm border px-5 py-1 font-semibold"
+                className="bg-white border-[#F05537] text-[#F05537] rounded-sm border px-5 py-1 font-semibold"
               >
                 Logout
               </Link>
@@ -120,13 +120,13 @@ const Navbar = ({ authenticated, onLogout }) => {
             <>
               <Link
                 to="/login"
-                className="text-gray-800 bg-white rounded-sm border px-5 py-1 font-semibold"
+                className="text-blue-700 bg-white rounded-sm border-blue-700 border px-5 py-1 font-semibold"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="text-white bg-blue-700 rounded-sm px-5 py-1 font-semibold"
+                className="text-white bg-[#F05537] rounded-sm px-5 py-1 font-semibold"
               >
                 Sign Up
               </Link>

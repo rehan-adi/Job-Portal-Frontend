@@ -11,7 +11,7 @@ function Home() {
   };
 
   return (
-    <div className='pt-24'>
+    <div className='pt-24 bg-[#F2F3F4]'>
       <Banner onSearch={handleSearch}/>
       <JobFilter searchQuery={searchQuery}/>
     </div>

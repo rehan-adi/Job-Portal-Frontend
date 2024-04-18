@@ -38,8 +38,8 @@ function PostJobForm() {
   };
 
   return (
-    <div className="lg:px-8  py-20">
-      <form className='bg-white py-12 lg:py-16 flex justify-between items-center flex-col' onSubmit={handleSubmit}>
+    <div className="lg:px-8 bg-[#F2F3F4] py-20">
+      <form className='py-12 lg:py-16 flex justify-between items-center flex-col' onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
             <label htmlFor="jobTitle" className="block text-sm mb-2 font-medium text-gray-700">Job Title</label>
@@ -50,7 +50,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="jobTitle"
               placeholder="Job Title"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -62,7 +62,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="companyName"
               placeholder="Company Name"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -74,7 +74,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="minSalary"
               placeholder="Minimum Salary"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -86,7 +86,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="maxSalary"
               placeholder="Maximum Salary"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -96,7 +96,7 @@ function PostJobForm() {
               value={formData.salaryType}
               onChange={handleChange}
               id="salaryType"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             >
               <option value="">Select Salary Type</option>
               <option value="Hourly">Hourly</option>
@@ -113,7 +113,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="jobLocation"
               placeholder="Job Location"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -125,7 +125,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="postingDate"
               placeholder="Posting Date"
-              className="border-gray-300 border px-2 py-[6px] w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border px-2 py-[6px] w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -135,7 +135,7 @@ function PostJobForm() {
               value={formData.experienceLevel}
               onChange={handleChange}
               id="experienceLevel"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             >
               <option value="">Select Experience Level</option>
               <option value="Entry Level">Entry Level</option>
@@ -150,7 +150,7 @@ function PostJobForm() {
               value={formData.employmentType}
               onChange={handleChange}
               id="employmentType"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             >
               <option value="">Select Employment Type</option>
               <option value="Full-time">Full-time</option>
@@ -168,7 +168,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="companyLogo"
               placeholder="Company Logo URL"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[40vw] rounded-md focus:outline-none "
             />
           </div>
         </div>
@@ -181,7 +181,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="requiredSkills"
               placeholder="Required Skills"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none "
             />
           </div>
           <div className="mb-4">
@@ -193,7 +193,7 @@ function PostJobForm() {
               onChange={handleChange}
               id="email"
               placeholder="Email Address"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none focus:border-blue-500"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none "
             />
           </div>
         <div className="mb-4">
@@ -204,11 +204,11 @@ function PostJobForm() {
               onChange={handleChange}
               id="jobDescription"
               placeholder="Job Description"
-              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none focus:border-blue-500 resize-none h-32"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none  resize-none h-32"
             />
           </div>
        <div className='w-full px-10 lg:px-28'>
-       <button type="submit" className="bg-blue-500 text-white rounded-md py-2 px-6 mt-4 hover:bg-blue-600 focus:outline-none focus:bg-blue-600">
+       <button type="submit" className="bg-blue-500 text-white rounded-md py-2 px-6 mt-4 hover:bg-blue-600 focus:outline-none ">
           Submit
         </button>
        </div>

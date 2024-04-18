@@ -61,11 +61,12 @@ function JobFilter({ searchQuery }) {
   };
 
   return (
-    <div className="flex lg:justify-start justify-center gap-24 items-start lg:px-24">
+    <div className="flex lg:justify-start bg-[#F2F3F4] justify-center gap-32 items-start lg:px-24">
       {/* Filter options on the left */}
-      <div className="w-[25vw] lg:flex flex-col hidden px-7 py-3 max-h-fit">
-        <h1 className="text-lg mb-8 font-semibold">Filters</h1>
-        <div className="px-2 py-3">
+      <div className="w-[23vw] lg:flex bg-white  border rounded-xl flex-col hidden px-10 py-3 max-h-fit">
+        <h1 className="text-lg mb-4 font-semibold">All Filters</h1>
+        <div className="border-[#E7E5F1]  border"></div>
+        <div className="py-6">
           <h1 className="mb-3 font-semibold">Job Role</h1>
           <div className="mb-2">
             <input
@@ -100,7 +101,8 @@ function JobFilter({ searchQuery }) {
             />
             <label htmlFor="category-engineering">Web Developer</label>
           </div>
-          <h1 className="mb-3 font-semibold mt-8">Experience Level</h1>
+          <div className="border-[#E7E5F1] mt-5 border"></div>
+          <h1 className="mb-3 font-semibold mt-5">Experience Level</h1>
           <div className="mb-2">
             <input
               type="radio"
@@ -148,13 +150,13 @@ function JobFilter({ searchQuery }) {
         </div>
       </div>
       {/* Display filtered jobs on the right */}
-      <div className="lg:w-[50vw] w-[90vw] bg-white max-h-fit overflow-y-auto">
+      <div className="lg:w-[50vw] w-[90vw] max-h-fit overflow-y-auto">
         <h1 className="text-lg mb-8 font-semibold">
           {" "}
           ({filteredJobs.length})Jobs
         </h1>
         {filteredJobs.map((job, index)  => (
-          <div key={index} className="lg:border border-2 p-5 mb-4 flex-col lg:flex-row flex">
+          <div key={index} className="lg:border border-2 bg-white p-5 mb-4 py-5 rounded-xl flex-col lg:flex-row flex">
             <div className="w-1/6">
               <img
                 src={job.companyUrl}
