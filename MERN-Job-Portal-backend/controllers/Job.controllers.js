@@ -1,6 +1,7 @@
 import postJobModel from '../models/PostJob.model.js';
 import UserModel from '../models/User.js'
-import sendNotification from '../service/notificationService.js'
+import mongoose from 'mongoose';
+// import sendNotification from '../service/notificationService.js'
 
 // create jobs 
 
@@ -66,3 +67,24 @@ export const getJobs = async(req, res) => {
     }
 }
 
+// Showing single job details 
+
+export const getJobDetails = async (req, res) => {
+    const { ObjectId } = mongoose.Types;
+    console.log('Received job ID:', req.params.id);
+
+    try {
+        const job = await postJobModel.findOne({
+            _id: new ObjectId(jobId, { suppressWarning: true }),
+        });
+
+        if (!job) {
+            return res.status(404).json({ error: 'Job not found' });
+        }
+
+        res.json(job);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};

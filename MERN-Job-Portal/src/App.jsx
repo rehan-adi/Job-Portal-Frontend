@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Navbar from './pages/Navbar';
 import Home from './pages/Home';
-import MyJobs from './pages/MyJobs';
 import PostJobForm from './components/PostJobForm';
+import JobDetail from './components/JobDetail.jsx';
 import Login from './components/Login';
 import { isAuthenticated } from './auth/auth.js'; 
 import SignUp from './components/SignUp.jsx';
@@ -41,7 +41,7 @@ function App() {
       <Navbar authenticated={authenticated} onLogout={handleLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/my-jobs" element={<MyJobs />} />
+        <Route path="/jobs/:id" element={<JobDetail />} />
         <Route path="/postjob" element={<PostJobForm />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

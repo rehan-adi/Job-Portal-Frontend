@@ -3,6 +3,7 @@ import { MdLocationPin } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
 import { FaDollarSign } from "react-icons/fa";
 import { BsCalendar3 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import axios from 'axios'
 
 function JobFilter({ searchQuery }) {
@@ -31,7 +32,7 @@ function JobFilter({ searchQuery }) {
   
 
   useEffect(() => {
-    console.log("Search Query:", searchQuery); // Add console log for search query
+    console.log("Search Query:", searchQuery);
     let filtered = [...jobs];
     if (selectedCategory) {
       filtered = filtered.filter((job) => job.jobTitle === selectedCategory);
@@ -162,6 +163,7 @@ function JobFilter({ searchQuery }) {
               />
             </div>
             <div className="w-5/6">
+            <Link to={`/jobs/${job._id}`} className="text-blue-600 hover:underline">
               <h3 className="mt-3 lg:mt-0">{job.companyName}</h3>
               <h2 className="text-lg mt-1 font-semibold">{job.jobTitle}</h2>
               <div className="flex flex-wrap items-center my-2 gap-4">
@@ -191,6 +193,7 @@ function JobFilter({ searchQuery }) {
                 </p>
               </div>
               <p className="lg:pr-40 w-[70vw] lg:w-auto opacity-80">{job.jobDescription}</p>
+              </Link>
             </div>
           </div>
         ))}
