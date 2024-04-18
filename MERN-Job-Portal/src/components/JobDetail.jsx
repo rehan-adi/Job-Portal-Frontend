@@ -6,6 +6,7 @@ import { FaBusinessTime } from "react-icons/fa6";
 import { FaLevelUpAlt } from "react-icons/fa";
 import { MdAttachMoney } from "react-icons/md";
 import { IoMdTime } from "react-icons/io";
+import { FaLaptopCode } from "react-icons/fa";
 
 function JobDetail() {
   const { id } = useParams();
@@ -42,13 +43,14 @@ function JobDetail() {
       <p><span><FaBusinessTime className='inline-block mb-1 mr-1'/></span>{job.employmentType}</p>
       <p><span><MdLocationPin className='inline-block mb-1 mr-1' /></span>{job.jobLocation}</p>
       </div>
-      <p className="lg:pr-40 w-[70vw] mt-4 lg:w-auto opacity-80">{job.jobDescription}</p>
+      <p className="lg:pr-24 w-[70vw] mt-4 lg:w-auto opacity-80">{job.jobDescription}</p>
       <div className='border-b w-[40vw] py-3'></div>
       <div className='mt-5 flex gap-5'>
          <p className=''><span><IoMdTime className='inline-block mb-1 mr-1'/></span><span>Posted: </span>{job.postingDate}</p>
+         <div className='border'></div>
          <p><span className='mr-2'>Posted By: </span>{job.email}</p>
-         {/* <p>{job.requiredSkills}</p> */}
       </div>
+         <p className='mt-2'><span><FaLaptopCode  className='inline-block mr-1 mb-1'/> <span className='mr-2'>Skills: </span> </span>{job.requiredSkills}</p>
       </div>
     </div>
   );
