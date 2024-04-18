@@ -27,6 +27,7 @@ const postJobSchema = mongoose.Schema({
   jobDescription: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
+  email: { type: String, required: true},
 },
 { timestamps: true });
 

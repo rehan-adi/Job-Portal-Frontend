@@ -14,7 +14,8 @@ function PostJobForm() {
     requiredSkills: '',
     companyLogo: '',
     employmentType: '', // Dropdown
-    jobDescription: ''
+    jobDescription: '',
+    email: ''
   });
 
   const handleChange = (e) => {
@@ -180,6 +181,18 @@ function PostJobForm() {
               onChange={handleChange}
               id="requiredSkills"
               placeholder="Required Skills"
+              className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label htmlFor="email" className="block text-sm mb-2 font-medium text-gray-700">Email Address</label>
+            <input
+              type="text"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              id="email"
+              placeholder="Email Address"
               className="border-gray-300 border p-2 w-[80vw] lg:w-[81vw] rounded-md focus:outline-none focus:border-blue-500"
             />
           </div>
