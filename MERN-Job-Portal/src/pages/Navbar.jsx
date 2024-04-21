@@ -68,28 +68,34 @@ const Navbar = ({ authenticated, onLogout }) => {
             )}
           </button>
         </div>
-        <div className="hidden lg:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-5">
         {authenticated ? (
             <>
               <Link
                 to="/logout"
                 onClick={handleLogout}
-                className="bg-white border-[#F05537] text-[#F05537] rounded-sm border px-5 py-1 font-semibold"
+                className="bg-white border-[#F05537] text-[#F05537] rounded-md border px-5 py-1 font-semibold"
               >
                 Logout
+              </Link>
+              <Link
+                to="/createprofile"
+                className="bg-blue-700 border-blue-700 text-white rounded-md border px-5 py-1 font-semibold"
+              >
+                Profile
               </Link>
             </>
           ) : (
             <>
               <Link
                 to="/login"
-                className="text-blue-700 bg-white rounded-sm border-blue-700 border px-5 py-1 font-semibold"
+                className="text-blue-700 bg-white rounded-md border-blue-700 border px-5 py-1 font-semibold"
               >
                 Login
               </Link>
               <Link
                 to="/signup"
-                className="text-white bg-[#F05537] rounded-sm px-5 py-1 font-semibold"
+                className="text-white bg-[#F05537] rounded-md px-5 py-1 font-semibold"
               >
                 Sign Up
               </Link>
@@ -114,6 +120,12 @@ const Navbar = ({ authenticated, onLogout }) => {
                 className="bg-white border-[#F05537] text-[#F05537] rounded-sm border px-5 py-1 font-semibold"
               >
                 Logout
+              </Link>
+              <Link
+                to="/createprofile"
+                className="bg-blue-700 border-blue-700 text-white rounded-md border px-5 py-1 font-semibold"
+              >
+                Profile
               </Link>
             </>
           ) : (
