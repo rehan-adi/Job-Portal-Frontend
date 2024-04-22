@@ -25,8 +25,8 @@ function Profile() {
   };
 
   useEffect(() => {
-    fetchProfileData();
-  }, []);
+    fetchProfileData([profileId]);
+  }, [profileId]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
