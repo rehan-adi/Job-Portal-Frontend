@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -7,6 +8,8 @@ function Profile() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [role, setRole] = useState("");
+  const [age, setAge] = useState("");
+  const [location, setLocation] = useState("");
   const [bio, setBio] = useState("");
 
   const [profileData, setProfileData] = useState(null);
@@ -15,9 +18,9 @@ function Profile() {
     fetchProfileData();
   }, []);
 
-  const fetchProfileData = async () => {
+  const fetchProfileData = async ({profileId}) => {
     try {
-      const response = await axios.get("/showprofiles");
+      const response = await axios.get("http://localhost:1000/postjob/getProfile/${profileId}");
       setProfileData(response.data);
     } catch (error) {
       console.error("Error fetching profile data:", error);
@@ -27,16 +30,24 @@ function Profile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("/profiles", {
+      const response = await axios.post("http://localhost:1000/postjob/createProfile", {
         username,
         email,
         password,
         fullName,
         role,
+        age,
+        location,
         bio,
       });
       console.log("Profile created successfully:", response.data);
-      fetchProfileData();
+      const profileId = response.data.profileId; // Access the profileId from the response
+
+    if (profileId) {
+      fetchProfileData(profileId); // Pass the profile ID to fetch its data
+    } else {
+      console.error("Error creating profile: Profile ID not found in response");
+    }
     } catch (error) {
       console.error("Error creating profile:", error);
     }
@@ -207,6 +218,8 @@ function Profile() {
               <input
                 type="number"
                 id="age"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
                 className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               />
             </div>
@@ -217,6 +230,8 @@ function Profile() {
               <input
                 type="text"
                 id="location"
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
                 className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               />
             </div>
