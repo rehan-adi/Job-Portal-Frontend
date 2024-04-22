@@ -10,8 +10,11 @@ function Profile() {
   const [role, setRole] = useState("");
   const [age, setAge] = useState("");
   const [location, setLocation] = useState("");
+  const [githubURL, setgithubURL] = useState("");
+  const [linkedinURL, setlinkedinURL] = useState("");
   const [bio, setBio] = useState("");
 
+  const [profileId, setProfileId] = useState(null);
   const [profileData, setProfileData] = useState(null);
 
 
@@ -39,13 +42,16 @@ function Profile() {
         role,
         age,
         location,
+        githubURL,
+        linkedinURL,
         bio,
       });
       console.log("Profile created successfully:", response.data);
-      const profileId = response.data.profileId;
+      const newProfileId = response.data.profileId;
 
-    if (profileId) {
-      fetchProfileData(profileId);
+    if (newProfileId) {
+      setProfileId(newProfileId); 
+      fetchProfileData(newProfileId);
     } else {
       console.error("Error creating profile: Profile ID not found in response");
     }
@@ -106,7 +112,9 @@ function Profile() {
           </label>
           <input
             type="text"
-            id="github"
+            id="githubURL"
+            value={githubURL}
+            onChange={(e) => setgithubURL(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-6"
             placeholder="Enter your GitHub profile URL"
           />
@@ -118,7 +126,9 @@ function Profile() {
           </label>
           <input
             type="text"
-            id="linkedin"
+            id="linkedinURL"
+            value={linkedinURL}
+            onChange={(e) => setlinkedinURL(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-4"
             placeholder="Enter your LinkedIn profile URL"
           />

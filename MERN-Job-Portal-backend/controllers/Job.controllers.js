@@ -71,15 +71,11 @@ export const getJobs = async (req, res) => {
 };
 
 // Showing single job details
-
 export const getJobDetails = async (req, res) => {
-  const { ObjectId } = mongoose.Types;
-  // console.log('Received job ID:', req.params.id);
+  const id = req.params.id;
 
   try {
-    const job = await postJobModel.findOne({
-      _id: new ObjectId(req.params.id),
-    });
+    const job = await postJobModel.findById(id);
 
     if (!job) {
       return res.status(404).json({ error: "Job not found" });
@@ -108,7 +104,7 @@ export const createProfile = async (req, res) => {
 
 
 export const getProfile = async (req, res) => {
-  const id = req.params.id
+  const id = req.params.id;
   try {
     const userprofile = await profile.findById(id);
     if (!userprofile) {
@@ -116,7 +112,7 @@ export const getProfile = async (req, res) => {
     }
     return res.status(200).json({ message: "Showing profile", userprofile });
   } catch (error) {
-    res.status(402).json({ error: error.message });
+    res.status(500).json({ error: error.message });
     console.log("Failed to fetch profile", error);
   }
 }
