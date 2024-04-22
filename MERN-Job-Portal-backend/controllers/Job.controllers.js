@@ -110,11 +110,11 @@ export const createProfile = async (req, res) => {
 export const getProfile = async (req, res) => {
   const id = req.params.id
   try {
-    const profile = await profile.findById(id);
-    if (!profile) {
+    const userprofile = await profile.findById(id);
+    if (!userprofile) {
       return res.status(404).json({ message: "Profile not found" });
     }
-    return res.status(200).json({ message: "Showing profile", profile });
+    return res.status(200).json({ message: "Showing profile", userprofile });
   } catch (error) {
     res.status(402).json({ error: error.message });
     console.log("Failed to fetch profile", error);

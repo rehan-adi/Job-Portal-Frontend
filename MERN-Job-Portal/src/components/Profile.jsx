@@ -14,18 +14,19 @@ function Profile() {
 
   const [profileData, setProfileData] = useState(null);
 
-  useEffect(() => {
-    fetchProfileData();
-  }, []);
 
-  const fetchProfileData = async ({profileId}) => {
+  const fetchProfileData = async (profileId) => {
     try {
-      const response = await axios.get("http://localhost:1000/postjob/getProfile/${profileId}");
+      const response = await axios.get(`http://localhost:1000/postjob/getProfile/${profileId}`);
       setProfileData(response.data);
     } catch (error) {
       console.error("Error fetching profile data:", error);
     }
   };
+
+  useEffect(() => {
+    fetchProfileData();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,10 +42,10 @@ function Profile() {
         bio,
       });
       console.log("Profile created successfully:", response.data);
-      const profileId = response.data.profileId; // Access the profileId from the response
+      const profileId = response.data.profileId;
 
     if (profileId) {
-      fetchProfileData(profileId); // Pass the profile ID to fetch its data
+      fetchProfileData(profileId);
     } else {
       console.error("Error creating profile: Profile ID not found in response");
     }
