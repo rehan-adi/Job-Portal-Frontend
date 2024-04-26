@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function PostJobForm() {
+
   const [formData, setFormData] = useState({
     jobTitle: '',
     companyName: '',
@@ -32,13 +35,16 @@ function PostJobForm() {
     try {
       const response = await axios.post("http://localhost:1000/postjob/", formData);
       console.log("Response from backend:", response.data);
+      toast.success("Job post created successfully!");
   } catch (error) {
       console.error("Error sending data to backend:", error);
+      toast.error("Error creating job post. Please try again later.");
   }
   };
 
   return (
     <div className="lg:px-8 bg-[#F2F3F4] py-20">
+      <ToastContainer />
       <form className='py-12 lg:py-16 flex justify-between items-center flex-col' onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="mb-4">
