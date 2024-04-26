@@ -4,7 +4,6 @@ import UserModel from "../models/User.js";
 // create jobs
 export const createJob = async (req, res) => {
   try {
-    z;
     const {
       jobTitle,
       companyName,
@@ -16,7 +15,7 @@ export const createJob = async (req, res) => {
       experienceLevel,
       employmentType,
       requiredSkills,
-      companyLogo,
+      companyUrl,
       jobDescription,
       email,
     } = req.body;
@@ -32,7 +31,7 @@ export const createJob = async (req, res) => {
       experienceLevel,
       employmentType,
       requiredSkills,
-      companyLogo,
+      companyUrl,
       jobDescription,
       email,
     });

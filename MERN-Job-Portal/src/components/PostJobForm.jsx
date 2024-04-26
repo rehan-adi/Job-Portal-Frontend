@@ -12,7 +12,7 @@ function PostJobForm() {
     postingDate: '',
     experienceLevel: '', // Dropdown
     requiredSkills: '',
-    companyLogo: '',
+    companyUrl: '',
     employmentType: '', // Dropdown
     jobDescription: '',
     email: ''
@@ -160,11 +160,11 @@ function PostJobForm() {
             </select>
           </div>
           <div className="mb-4">
-            <label htmlFor="companyLogo" className="block text-sm mb-2 font-medium text-gray-700">Company Logo URL</label>
+            <label htmlFor="companyUrl" className="block text-sm mb-2 font-medium text-gray-700">Company Logo URL</label>
             <input
               type="text"
-              name="companyLogo"
-              value={formData.companyLogo}
+              name="companyUrl"
+              value={formData.companyUrl}
               onChange={handleChange}
               id="companyLogo"
               placeholder="Company Logo URL"
