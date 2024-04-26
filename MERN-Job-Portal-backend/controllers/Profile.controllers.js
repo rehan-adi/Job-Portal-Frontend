@@ -4,6 +4,7 @@ export const createProfile = async (req, res) => {
   try {
     const newProfile = new profileModel(req.body);
     await newProfile.save();
+    console.log("New Profile ID:", newProfile._id);
     return res.status(200).json({
       success: true,
       message: "Profile saved successfully",
