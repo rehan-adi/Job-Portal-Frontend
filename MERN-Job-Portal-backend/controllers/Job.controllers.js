@@ -1,11 +1,7 @@
 import postJobModel from "../models/PostJob.model.js";
 import UserModel from "../models/User.js";
-import profile from "../models/profile.js";
-import mongoose from "mongoose";
-// import sendNotification from '../service/notificationService.js'
 
 // create jobs
-
 export const createJob = async (req, res) => {
   try {
     z;
@@ -44,10 +40,6 @@ export const createJob = async (req, res) => {
     await newJob.save();
 
     const users = await UserModel.find();
-
-    // users.forEach(async (user) => {
-    //     await sendNotification(user.email, 'New Job Alert', `A new job "${jobTitle}" has been posted by ${companyName}.`);
-    // });
 
     res
       .status(201)
@@ -88,31 +80,4 @@ export const getJobDetails = async (req, res) => {
   }
 };
 
-export const createProfile = async (req, res) => {
-  try {
-    const newProfile = new profile(req.body);
-    await newProfile.save();
-    return res.status(200).json({
-      success: true,
-      message: "Profile saved successfully",
-      profileId: newProfile._id 
-    });
-  } catch (error) {
-    console.log("Failed to create profile", error);
-  }
-};
 
-
-export const getProfile = async (req, res) => {
-  const id = req.params.id;
-  try {
-    const userprofile = await profile.findById(id);
-    if (!userprofile) {
-      return res.status(404).json({ message: "Profile not found" });
-    }
-    return res.status(200).json({ message: "Showing profile", userprofile });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-    console.log("Failed to fetch profile", error);
-  }
-}
