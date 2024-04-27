@@ -8,6 +8,7 @@ import Login from './components/Login';
 import { isAuthenticated } from './auth/auth.js'; 
 import SignUp from './components/SignUp.jsx';
 import Profile from './components/Profile.jsx';
+import Salary from './components/Salary.jsx';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/createprofile" element={<Profile />} />
+        <Route path="/salary-estimate" element={<Salary />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </>
