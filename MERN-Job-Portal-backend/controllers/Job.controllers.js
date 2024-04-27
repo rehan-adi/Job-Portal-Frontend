@@ -61,6 +61,17 @@ export const getJobs = async (req, res) => {
   }
 };
 
+// get salary of jobs 
+
+export const getSalary = async(req, res) => {
+   try {
+      const salary = await postJobModel.find();
+      return res.status(200).json({ message: "Showing salary", salary });
+   } catch (error) {
+     console.log('Failed to get salary', error);
+   }
+}
+
 // Showing single job details
 export const getJobDetails = async (req, res) => {
   const id = req.params.id;
