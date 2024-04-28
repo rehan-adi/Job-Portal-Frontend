@@ -43,7 +43,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/createprofile" element={<Profile />} />
-        <Route path="/profile" element={<ProfileDetails />} />
+        <Route path="/profile/:id" element={<ProfileDetails />} />
         <Route path="/salary-estimate" element={<Salary />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

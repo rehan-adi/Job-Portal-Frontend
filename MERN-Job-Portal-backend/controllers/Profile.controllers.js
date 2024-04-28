@@ -1,4 +1,5 @@
 import profileModel from "../models/profile.js";
+import mongoose from "mongoose";
 
 export const createProfile = async (req, res) => {
   try {

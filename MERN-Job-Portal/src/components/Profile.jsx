@@ -13,10 +13,10 @@ function Profile() {
   const [githubURL, setGithubURL] = useState("");
   const [linkedinURL, setLinkedinURL] = useState("");
   const [bio, setBio] = useState("");
-  const [profileId, setProfileId] = useState(null);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
-
+  
+  const [profileId, setProfileId] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -35,6 +35,7 @@ function Profile() {
         image
       });
       console.log("Profile created successfully:", response.data);
+      console.log(response.data);
       const newProfileId = response.data.profileId;
       if (newProfileId) {
         setProfileId(newProfileId);
@@ -217,6 +218,7 @@ function Profile() {
           </button>
         </div>
       </form>
+      {profileId && <ProfileDetails profileId={profileId} />}
     </div>
   );
 }
