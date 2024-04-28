@@ -9,6 +9,7 @@ import { isAuthenticated } from './auth/auth.js';
 import SignUp from './components/SignUp.jsx';
 import Profile from './components/Profile.jsx';
 import Salary from './components/Salary.jsx';
+import ProfileDetails from './components/ProfileDetails.jsx';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -21,21 +22,15 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!authenticated) {
-      navigate('/login') && navigate('/signup');
+    if (authenticated && window.location.pathname === '/login') {
+      navigate('/');
     }
   }, [authenticated, navigate]);
 
   const handleLogout = () => {
     setAuthenticated(false);
     localStorage.removeItem('token');
-    if(localStorage.removeItem){
-      navigate('/login');
-    }
-    else{
-      localStorage.setItem('token', token);
-      navigate('/')
-    }
+    navigate('/login');
   };
 
   return (
@@ -48,6 +43,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/createprofile" element={<Profile />} />
+        <Route path="/profile" element={<ProfileDetails />} />
         <Route path="/salary-estimate" element={<Salary />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

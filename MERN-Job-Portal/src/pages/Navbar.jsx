@@ -72,7 +72,7 @@ const Navbar = ({ authenticated, onLogout }) => {
         {authenticated ? (
             <>
               <Link
-                to="/logout"
+                to="/login"
                 onClick={handleLogout}
                 className="bg-white border-[#F05537] text-[#F05537] rounded-md border px-5 py-1 font-semibold"
               >
@@ -115,7 +115,7 @@ const Navbar = ({ authenticated, onLogout }) => {
           {authenticated ? (
             <>
               <Link
-                to="/logout"
+                to="/login"
                 onClick={handleLogout}
                 className="bg-white border-[#F05537] text-[#F05537] rounded-sm border px-5 py-1 font-semibold"
               >

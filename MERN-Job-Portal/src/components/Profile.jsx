@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ProfileDetails from "./ProfileDetails";
+import { useNavigate } from 'react-router-dom'; 
 
 function Profile() {
   const [username, setUsername] = useState("");
@@ -9,10 +10,14 @@ function Profile() {
   const [fullName, setFullName] = useState("");
   const [location, setLocation] = useState("");
   const [role, setRole] = useState("");
+  const [githubURL, setGithubURL] = useState("");
+  const [linkedinURL, setLinkedinURL] = useState("");
   const [bio, setBio] = useState("");
   const [profileId, setProfileId] = useState(null);
   const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,11 +28,17 @@ function Profile() {
         password,
         fullName,
         bio,
+        location,
+        role,
+        githubURL,
+        linkedinURL,
+        image
       });
       console.log("Profile created successfully:", response.data);
       const newProfileId = response.data.profileId;
       if (newProfileId) {
         setProfileId(newProfileId);
+        navigate(`/profile/${newProfileId}`); 
       } else {
         console.error("Error creating profile: Profile ID not found in response");
       }
@@ -84,8 +95,8 @@ function Profile() {
           <input
             type="text"
             id="githubURL"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={githubURL}
+            onChange={(e) => setGithubURL(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-6"
             placeholder="Enter your GitHub profile URL"
           />
@@ -98,8 +109,8 @@ function Profile() {
           <input
             type="text"
             id="linkedinURL"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={linkedinURL}
+            onChange={(e) => setLinkedinURL(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-4"
             placeholder="Enter your LinkedIn profile URL"
           />
