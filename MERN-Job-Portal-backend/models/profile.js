@@ -7,10 +7,10 @@ const profileSchema = new mongoose.Schema({
   fullName: { type: String, },
   location: { type: String, },
   role: { type: String, },
-  age: { type: Number, },
   bio: { type: String, },
   githubURL: { type: String,},
   linkedinURL: { type: String,},
+  profileImage: { type: String, },
 });
 
 const profileModel = mongoose.model("Profile", profileSchema);

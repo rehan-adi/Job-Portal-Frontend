@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import ProfileDetails from "./ProfileDetails";
 
 function Profile() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [role, setRole] = useState("");
-  const [age, setAge] = useState("");
   const [location, setLocation] = useState("");
-  const [githubURL, setgithubURL] = useState("");
-  const [linkedinURL, setlinkedinURL] = useState("");
+  const [role, setRole] = useState("");
   const [bio, setBio] = useState("");
-
-  const [profileId, setProfileId] = useState();
-  const [profileData, setProfileData] = useState(null);
-
-  console.log(profileId);
-
-  const fetchProfileData = async () => {
-    try {
-      const response = await axios.get(`http://localhost:1000/profile/getProfile/${profileId}`);
-      setProfileData(response.data);
-    } catch (error) {
-      console.error("Error fetching profile data:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchProfileData();
-  }, [profileId]);
+  const [profileId, setProfileId] = useState(null);
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -40,50 +22,19 @@ function Profile() {
         email,
         password,
         fullName,
-        role,
-        age,
-        location,
-        githubURL,
-        linkedinURL,
         bio,
       });
       console.log("Profile created successfully:", response.data);
       const newProfileId = response.data.profileId;
-      console.log(response.data.profileId);
-      console.log(newProfileId);
-
-    if (newProfileId) {
-      setProfileId(newProfileId); 
-      fetchProfileData();
-    } else {
-      console.error("Error creating profile: Profile ID not found in response");
-    }
+      if (newProfileId) {
+        setProfileId(newProfileId);
+      } else {
+        console.error("Error creating profile: Profile ID not found in response");
+      }
     } catch (error) {
       console.error("Error creating profile:", error);
     }
   };
-
-  if (profileData) {
-    return (
-      <div className="h-screen w-full flex justify-center items-center bg-gray-100">
-        <div className="max-w-md bg-white p-8 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold mb-4">Your Profile</h2>
-          <p>
-            <strong>Username:</strong> {profileData.username}
-          </p>
-          <p>
-            <strong>Email:</strong> {profileData.email}
-          </p>
-          <p>
-            <strong>Full Name:</strong> {profileData.fullName}
-          </p>
-          <p>
-            <strong>Bio:</strong> {profileData.bio}
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-h-fit w-full flex justify-center py-28 items-center bg-[#F2F3F4]">
@@ -91,12 +42,11 @@ function Profile() {
         onSubmit={handleSubmit}
         className="w-full bg-[#F2F3F4] p-8 rounded-lg  flex justify-around items-start"
       >
-        {/* Image upload field */}
         <div
           className="bg-white shadow-md rounded-md border w-1/4 p-4 flex flex-col items-start"
           style={{ minHeight: "300px" }}
         >
-          <label
+         <label
             htmlFor="image"
             className="block text-gray-700 font-semibold mb-2"
           >
@@ -105,10 +55,28 @@ function Profile() {
           <input
             type="file"
             id="image"
-            className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-6"
+            accept="image/*"
+            onChange={(e) => handleImageUpload(e.target.files[0])}
+            className="hidden"
           />
+          <div className="flex items-center space-x-2">
+            <label
+              htmlFor="image"
+              className="cursor-pointer bg-blue-500 py-2 px-4 text-white font-semibold rounded-md hover:bg-blue-600"
+            >
+              Upload Image
+            </label>
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Profile Preview"
+                className="w-24 h-24 object-cover rounded-full border"
+              />
+            )}
+          </div>
+
           <label
-            htmlFor="github"
+            htmlFor="githubURL"
             className="block text-gray-700 font-semibold mb-2"
           >
             GitHub
@@ -116,13 +84,13 @@ function Profile() {
           <input
             type="text"
             id="githubURL"
-            value={githubURL}
-            onChange={(e) => setgithubURL(e.target.value)}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-6"
             placeholder="Enter your GitHub profile URL"
           />
           <label
-            htmlFor="linkedin"
+            htmlFor="linkedinURL"
             className="block text-gray-700 font-semibold mb-2"
           >
             LinkedIn
@@ -130,15 +98,14 @@ function Profile() {
           <input
             type="text"
             id="linkedinURL"
-            value={linkedinURL}
-            onChange={(e) => setlinkedinURL(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 mb-4"
             placeholder="Enter your LinkedIn profile URL"
           />
         </div>
 
         <div className="w-2/4 bg-white border shadow-md rounded-md p-4">
-          {/* Other input fields */}
           <h2 className="text-2xl font-semibold mb-4 text-black">
             Create Profile
           </h2>
@@ -182,64 +149,8 @@ function Profile() {
               />
             </div>
             <div className="w-full md:w-1/2 pl-2">
-              <label
-                htmlFor="confirmPassword"
-                className="block font-semibold mb-2"
-              >
-                Confirm Password
-              </label>
-              <input
-                type="password"
-                id="confirmPassword"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-          </div>
-          <div className="mb-4 flex flex-wrap">
-            <div className="w-full md:w-1/2 pr-2">
-              <label htmlFor="fullName" className="block font-semibold mb-2">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                value={fullName}
-                onChange={(e) => setFullName(e.target.value)}
-                className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full md:w-1/2 pl-2">
-              <label htmlFor="fullName" className="block font-semibold mb-2">
-                Your Role
-              </label>
-              <input
-                type="text"
-                id="role"
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-          </div>
-
-          <div className="mb-4 flex flex-wrap">
-            <div className="w-full sm:w-1/2 pr-2">
-              <label htmlFor="age" className="block font-semibold mb-2">
-                Age
-              </label>
-              <input
-                type="number"
-                id="age"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
-              />
-            </div>
-            <div className="w-full sm:w-1/2 pl-2">
               <label htmlFor="location" className="block font-semibold mb-2">
-                Location
+                location
               </label>
               <input
                 type="text"
@@ -249,6 +160,32 @@ function Profile() {
                 className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
               />
             </div>
+          </div>
+          <div className="mb-4 flex flex-wrap">
+          <div className="w-full md:w-1/2 pr-2">
+            <label htmlFor="fullName" className="block font-semibold mb-2">
+              Full Name
+            </label>
+            <input
+              type="text"
+              id="fullName"
+              value={fullName}
+              onChange={(e) => setFullName(e.target.value)}
+              className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+            />
+          </div>
+          <div className="w-full md:w-1/2 pl-2">
+            <label htmlFor="fullName" className="block font-semibold mb-2">
+              Job Role
+            </label>
+            <input
+              type="text"
+              id="role"
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full bg-white border rounded-md px-3 py-2 focus:outline-none focus:border-blue-500"
+            />
+          </div>
           </div>
           <div className="mb-4">
             <label htmlFor="bio" className="block font-semibold mb-2">
