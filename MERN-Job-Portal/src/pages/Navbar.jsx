@@ -29,7 +29,6 @@ const Navbar = ({ authenticated, onLogout }) => {
         </div>
         <nav className="hidden lg:flex flex-grow justify-center items-center space-x-14">
           <Link to="/" className="text-blue-700">Start a Search</Link>
-          <Link to="/my-jobs" className="text-gray-800">My Jobs</Link>
           <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
           <Link to="/postjob" className="text-gray-800">Post a Job</Link>
         </nav>
@@ -107,7 +106,6 @@ const Navbar = ({ authenticated, onLogout }) => {
         <div className="lg:hidden border-2 w-[80vw] px-4 py-5 mt-5">
           <nav className="flex flex-col space-y-4 mt-4">
             <Link to="/" className="text-gray-800">Start a Search</Link>
-            <Link to="/my-jobs" className="text-gray-800">My Jobs</Link>
             <Link to="/salary-estimate" className="text-gray-800">Salary Estimate</Link>
             <Link to="/postjob" className="text-gray-800">Post a Job</Link>
           </nav>
