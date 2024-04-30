@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Navbar from './pages/Navbar';
+import Footer from './pages/Footer.jsx';
 import Home from './pages/Home';
 import PostJobForm from './components/PostJobForm';
 import JobDetail from './components/JobDetail.jsx';
@@ -47,6 +48,7 @@ function App() {
         <Route path="/salary-estimate" element={<Salary />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
+      <Footer />
     </>
   );
 }
