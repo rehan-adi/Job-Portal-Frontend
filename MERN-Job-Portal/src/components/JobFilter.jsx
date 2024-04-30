@@ -161,7 +161,7 @@ function JobFilter({ searchQuery }) {
               <img
                 src={job.companyUrl}
                 alt={job.companyName}
-                className="w-[4vw] h-[4vw]"
+                className="lg:w-[3vw] w-[12vw] h-[12vw] lg:h-[3vw]"
               />
             </div>
             <div className="w-5/6">

@@ -27,11 +27,11 @@ function Salary() {
 
   return (
     <div className="max-h-fit bg-[#F2F3F4] py-32 w-full">
-      <h1 className="text-4xl text-black font-bold px-24 mb-16">Salaries</h1>
-      <div className="flex px-24 justify-center">
+      <h1 className="lg:text-4xl text-3xl text-black font-bold lg:px-24 px-10 mb-16">Salaries</h1>
+      <div className="flex px-10 lg:px-24 justify-center">
         <ul className="grid grid-cols-1 gap-7 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
           {salaries.map((salary, index) => (
-            <li key={index} className="bg-white border shadow-md p-6 w-[28vw] rounded-lg">
+            <li key={index} className="bg-white border shadow-md p-6 w-[80vw] lg:w-[28vw] rounded-lg">
                 <div className="flex justify-between">
                 <div>
                 <div className="mb-4 font-semibold text-xl">
@@ -45,7 +45,7 @@ function Salary() {
                 <img
                   src={salary.companyUrl}
                   alt={salary.companyName}
-                  className="w-20 h-20 object-contain mx-auto mb-2"
+                  className="lg:w-16 w-12 h-12 lg:h-16 object-contain mx-auto mb-2"
                 />
               </div>
               </div>

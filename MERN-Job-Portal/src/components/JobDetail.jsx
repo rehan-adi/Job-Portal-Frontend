@@ -49,7 +49,7 @@ function JobDetail() {
             <img
                 src={job.companyUrl}
                 alt={job.companyName}
-                className="w-[4vw] h-[4vw]"
+                className="lg:w-[4vw] w-[12vw] h-[6vh] lg:h-[4vw]"
               />
           </div>
           <div className="flex flex-wrap mt-5 gap-5">
