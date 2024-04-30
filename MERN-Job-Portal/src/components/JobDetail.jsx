@@ -31,7 +31,7 @@ function JobDetail() {
   }
 
   return (
-    <div className="w-full h-screen lg:px-28 px-8 py-28 bg-[#F2F3F4]">
+    <div className="w-full max-h-fit lg:px-28 px-8 py-36 bg-[#F2F3F4]">
       <h1 className="font-semibold text-4xl ">
         Job <span className="text-blue-600">Details</span>
       </h1>
