@@ -28,9 +28,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center max-h-fit py-[145px] bg-[#F2F3F4]">
-      <div className="bg-white shadow-md border rounded-lg lg:px-32 px-20 py-10">
-        <h2 className="text-2xl font-semibold text-center mb-8">Login</h2>
+    <div className="flex justify-center items-center min-h-screen bg-black">
+      <div className="rounded-lg lg:w-[28vw] md:w-[45vw] sm:w-[45vw] w-full px-5 py-10">
+      <h2 className="text-3xl font-semibold text-white text-center mb-14">Signin to your HireSphere account</h2>
         <form onSubmit={handleSubmit} className="mb-6">
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">

@@ -30,7 +30,7 @@ const SignUp = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-black">
-      <div className="shadow-md rounded-lg lg:w-[28vw] md:w-[45vw] sm:w-[45vw] w-full px-5 py-10">
+      <div className="rounded-lg lg:w-[28vw] md:w-[45vw] sm:w-[45vw] w-full px-5 py-10">
         <h2 className="text-3xl font-semibold text-white text-center mb-14">Create your HireSphere account</h2>
         <form onSubmit={handleSubmit} className="mb-6">
           <div class="w-full">
