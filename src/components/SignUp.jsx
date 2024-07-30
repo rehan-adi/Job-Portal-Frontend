@@ -76,7 +76,7 @@ const SignUp = () => {
               value={role}
               onChange={(e) => setRole(e.target.value)}
               required
-              >
+            >
               <option value="">Select Your Role</option>
               <option value="job_seeker">job_seeker</option>
               <option value="employer">employer</option>
@@ -86,15 +86,12 @@ const SignUp = () => {
               Select a City
             </label>
           </div>
-          <div className="flex items-center justify-between">
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="submit"
-            >
+          <div className="flex items-center mt-7 justify-between">
+            <button className="rounded-2xl border-2 border-dashed border-black bg-[#EA580C] px-4 py-2 font-semibold uppercase text-white text-xs transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
               Sign Up
             </button>
           </div>
-          <p className='mt-8'>Already have an account? <Link to="/login" className="text-blue-500 underline text-sm font-semibold hover:underline">Login</Link> </p>
+          <p className='mt-8 text-white'>Already have an account? <Link to="/login" className="text-[#EA580C] underline text-sm font-semibold hover:underline">Login</Link> </p>
         </form>
         {error && <p className="text-red-500 text-xs italic">{error}</p>}
       </div>
