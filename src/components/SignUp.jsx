@@ -39,7 +39,7 @@ const SignUp = () => {
                 <MdOutlineMarkEmailRead className='text-white text-xl' />
               </div>
               <input
-                className="peer w-full h-full bg-transparent text-white  font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-3 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
+                className="peer w-full h-full bg-transparent text-white  font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
                 id="email"
                 type="email"
                 placeholder=""
@@ -51,13 +51,13 @@ const SignUp = () => {
               </label>
             </div>
           </div>
-          <div class="w-full mt-6">
+          <div class="w-full mt-7">
             <div class="relative w-full min-w-[200px] h-10">
               <div class="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
                 <SlLockOpen className='text-white text-xl' />
               </div>
               <input
-                className="peer w-full h-full bg-transparent text-white font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-3 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
+                className="peer w-full h-full bg-transparent text-white font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
                 id="password"
                 type="password"
                 placeholder=""
@@ -69,9 +69,9 @@ const SignUp = () => {
               </label>
             </div>
           </div>
-          <div className="relative h-10 w-full mt-6 min-w-[200px]">
+          <div className="relative h-11 w-full mt-7">
             <select
-              className="peer h-full w-full rounded-[7px] text-white border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-[#EA580C] focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+              className="peer h-full w-full rounded-[7px] text-white border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-[#EA580C] focus:border-t-transparent focus:outline-0 disabled:border-0"
               id="role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
@@ -88,17 +88,17 @@ const SignUp = () => {
           </div>
           <div className="flex items-center mt-9 justify-between">
             <button
-              class="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-3 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
+              class="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center font-sans text-sm font-bold text-white transition-all"
               type="button"
             >
               Sign Up
             </button>
           </div>
           <button className='w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5'>
-            <svg stroke="currentColor" className='mt-1' fill="currentColor" stroke-width="0" viewBox="0 0 488 512" height="25px" width="15px" xmlns="http://www.w3.org/2000/svg"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
+            <svg stroke="currentColor" className='mt-1' fill="currentColor" stroke-width="0" viewBox="0 0 488 512" height="22px" width="15px" xmlns="http://www.w3.org/2000/svg"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
             Sign Up with Google
           </button>
-          <p className='mt-6 text-center text-white'>Already have an account? <Link to="/login" className="text-[#EA580C] underline text-sm font-semibold hover:underline">Login</Link> </p>
+          <p className='mt-6 text-center text-white'>Already have an account? <Link to="/signin" className="text-[#EA580C] underline text-sm font-semibold hover:underline">Sign In</Link> </p>
         </form>
         {error && <p className="text-red-500 text-xs italic">{error}</p>}
       </div>
