@@ -36,7 +36,7 @@ function App() {
 
   return (
     <>
-      <Navbar authenticated={authenticated} onLogout={handleLogout} />
+      {/* <Navbar authenticated={authenticated} onLogout={handleLogout} /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/jobs/:id" element={<JobDetail />} />
@@ -48,7 +48,7 @@ function App() {
         <Route path="/salary-estimate" element={<Salary />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }
