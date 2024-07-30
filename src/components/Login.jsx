@@ -70,8 +70,13 @@ const Login = () => {
               </label>
             </div>
           </div>
-          <div className="flex items-center justify-between">
-             {/* button  */}
+          <div className="flex items-center mt-9 justify-between">
+            <button
+              class="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-3 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
+              type="button"
+            >
+              Sign In
+            </button>
           </div>
           <p className='mt-8'>Don't have an account <Link to="/signup" className="text-blue-500 underline text-sm font-semibold hover:underline">Sign Up</Link> </p>
         </form>
