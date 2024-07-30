@@ -24,7 +24,7 @@ const Navbar = ({ authenticated, onLogout }) => {
             className="h-8 mr-2"
           />
           <div className="text-gray-800 text-2xl lg:text-xl font-bold">
-            JobPortal
+           HireSphere
           </div>
         </div>
         <nav className="hidden lg:flex flex-grow justify-center items-center space-x-14">
