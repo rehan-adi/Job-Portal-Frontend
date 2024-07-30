@@ -86,8 +86,11 @@ const SignUp = () => {
               Select a City
             </label>
           </div>
-          <div className="flex items-center mt-7 justify-between">
-            <button className="rounded-2xl border-2 border-dashed border-black bg-[#EA580C] px-4 py-2 font-semibold uppercase text-white text-xs transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] active:translate-x-[0px] active:translate-y-[0px] active:rounded-2xl active:shadow-none">
+          <div className="flex items-center mt-9 justify-between">
+            <button
+              class="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-3 px-10 text-center align-middle font-sans text-xs font-bold uppercase text-white transition-all"
+              type="button"
+            >
               Sign Up
             </button>
           </div>
