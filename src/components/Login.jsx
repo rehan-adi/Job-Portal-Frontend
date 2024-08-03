@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     try {
 
-      const response = await axios.post('http://localhost:1000/auth/login', {
+      const response = await axios.post('https://hiresphere.onrender.com/api/v1/auth/login', {
         email: email,
         password: password
       });
@@ -73,7 +73,7 @@ const Login = () => {
           <div className="flex items-center mt-9 justify-between">
             <button
               className="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
-              type="button"
+              type="submit"
             >
               Sign In
             </button>

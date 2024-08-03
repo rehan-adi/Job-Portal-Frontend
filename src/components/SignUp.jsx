@@ -15,7 +15,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:1000/api/v1/auth/register', {
+      const response = await axios.post('https://hiresphere.onrender.com/api/v1/auth/register', {
         email: email,
         password: password,
         role: role
@@ -40,6 +40,7 @@ const SignUp = () => {
                 <MdOutlineMarkEmailRead className='text-white text-xl' />
               </div>
               <input
+                aria-label="Email"
                 className="peer w-full h-full bg-transparent text-white  font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
                 id="email"
                 type="email"
