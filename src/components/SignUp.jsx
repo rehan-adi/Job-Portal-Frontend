@@ -8,7 +8,6 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [role, setRole] = useState('');
-  const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
@@ -25,6 +24,7 @@ const SignUp = () => {
         navigate('/signin');
       }
     } catch (error) {
+      console.log(error, error.message);
       setError(error.message);
     }
   };
