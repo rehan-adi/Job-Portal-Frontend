@@ -14,7 +14,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('https://hiresphere.onrender.com/api/v1/auth/register', {
+      const response = await axios.post(`${process.env.BACKEND_URL}/api/v1/auth/register`, {
         email: email,
         password: password,
         role: role
