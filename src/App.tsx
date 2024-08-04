@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
-import Navbar from './pages/Navbar.jsx';
-import Footer from './pages/Footer.jsx';
-import Home from './pages/Home.jsx';
-import PostJobForm from './components/PostJobForm.jsx';
-import JobDetail from './components/JobDetail.jsx';
-import Login from './components/auth/Login.jsx';
-import SignUp from './components/auth/SignUp.jsx';
+import Navbar from './pages/Navbar.js';
+import Footer from './pages/Footer.js';
+import Home from './pages/Home.js';
+import PostJobForm from './components/PostJobForm.js';
+import JobDetail from './components/JobDetail.js';
+import Login from './components/auth/Login.js';
+import SignUp from './components/auth/SignUp.js';
 import { isAuthenticated } from './auth/auth.js'; 
-import Profile from './components/Profile.jsx';
-import Salary from './components/Salary.jsx';
-import ProfileDetails from './components/ProfileDetails.jsx';
+import Profile from './components/Profile.js';
+import Salary from './components/Salary.js';
+import ProfileDetails from './components/ProfileDetails.js';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
