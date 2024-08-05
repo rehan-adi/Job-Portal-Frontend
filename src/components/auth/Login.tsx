@@ -5,7 +5,6 @@ import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { SlLockOpen } from "react-icons/sl";
 
 const Login: React.FC = (): JSX.Element => {
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -13,19 +12,12 @@ const Login: React.FC = (): JSX.Element => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-
     e.preventDefault();
     setError(null);
 
-    const backendUrl = process.env.REACT_APP_BACKEND_URL;
-    if (!backendUrl) {
-      setError("Backend URL is not set. Please contact support.");
-      return;
-    }
-
     try {
       const response = await axios.post(
-        `${backendUrl}/api/v1/auth/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`,
         {
           email: email,
           password: password,
@@ -35,7 +27,6 @@ const Login: React.FC = (): JSX.Element => {
       const token = response.data.token;
       localStorage.setItem("token", token);
       navigate("/");
-
     } catch (error) {
       console.log(error);
       if (error instanceof Error) {
@@ -67,6 +58,7 @@ const Login: React.FC = (): JSX.Element => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 aria-label="Email"
+                aria-required="true"
               />
               <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-white peer-focus:text-white before:border-blue-gray-200 peer-focus:before:!border-[#EA580C] after:border-blue-gray-200 peer-focus:after:!border-[#EA580C]">
                 Email
@@ -87,6 +79,7 @@ const Login: React.FC = (): JSX.Element => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 aria-label="Password"
+                aria-required="true"
               />
               <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-white peer-focus:text-white before:border-blue-gray-200 peer-focus:before:!border-[#EA580C] after:border-blue-gray-200 peer-focus:after:!border-[#EA580C]">
                 Password
@@ -101,7 +94,7 @@ const Login: React.FC = (): JSX.Element => {
               Sign In
             </button>
           </div>
-          <button className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
+          <button type="button" className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
             <svg
               stroke="currentColor"
               className="mt-1"
