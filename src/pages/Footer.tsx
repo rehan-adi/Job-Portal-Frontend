@@ -1,5 +1,4 @@
 import React from "react";
-import { Typography } from "@material-tailwind/react";
 
 const LINKS = [
   {
@@ -50,7 +49,7 @@ const Footer: React.FC = () => {
             ))}
           </div>
         </div>
-        <div className="mt-12 flex w-full text-white flex-col items-center justify-center border-t border-white border-opacity-25 py-4 md:flex-row md:justify-between">
+        <div className="mt-12 flex w-full text-white flex-col items-center justify-center border-t border-white border-opacity-15 py-4 md:flex-row md:justify-between">
           <p className="mb-4 text-center font-normal text-sm md:mb-0">
             &copy; {currentYear}{" "}
             <a href="https://material-tailwind.com/">HireSphere Inc</a>. All

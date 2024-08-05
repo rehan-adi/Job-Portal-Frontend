@@ -10,7 +10,7 @@ const Navbar: React.FC = (): JSX.Element => {
   };
 
   return (
-    <header className="bg-black text-white fixed w-full z-50 py-5 lg:px-32 px-8">
+    <header className="bg-black text-white border-b border-white border-opacity-15 fixed w-full z-50 py-5 lg:px-32 px-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
