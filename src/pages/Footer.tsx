@@ -23,17 +23,17 @@ const Footer: React.FC = () => {
     <footer className="relative bg-black pt-5 w-full">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between items-start gap-4 md:grid-cols-2">
-          <div className="flex items-center">
+          <div className="flex mb-3 lg:mb-0  items-center">
             <img
               src="https://github.com/mdalmamunit427/mern-job-portal-starter-files/blob/main/public/images/Linear.png?raw=true"
               alt="Linear Logo"
               className="h-8 mr-2"
             />
-            <h1 className="text-white text-2xl lg:text-xl font-bold">
+            <h1 className="text-white text-xl lg:text-xl font-bold">
               HireSphere
             </h1>
           </div>
-          <div className="grid grid-cols-3 justify-between gap-4">
+          <div className="grid grid-cols-3 justify-between gap-5">
             {LINKS.map(({ title, items }) => (
               <ul key={title}>
                 <h2 className="mb-3 text-base font-medium text-white">
