@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react'
 
-function Footer() {
+const Footer: React.FC = () => {
   return (
     <div className="lg:py-5 py-10 bg-white lg:flex lg:flex-row flex-col justify-between shadow-lg lg:shadow-md items-center px-4 lg:px-32 border-t-2 lg:border-t w-full">
       <div className="flex items-center mb-4 lg:mb-0">
@@ -21,7 +21,7 @@ function Footer() {
         </ul>
       </div>
     </div>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

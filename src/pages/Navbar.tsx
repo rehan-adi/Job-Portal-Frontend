@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Navbar = ({ authenticated, onLogout }) => {
+const Navbar: React.FC = ({ authenticated, onLogout }): JSX.Element => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate(); 
 
