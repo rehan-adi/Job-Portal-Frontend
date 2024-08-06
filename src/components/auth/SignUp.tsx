@@ -9,7 +9,6 @@ const SignUp: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const [loading, setLoading] = useState(false);;
 
   const navigate = useNavigate();
 
@@ -18,7 +17,7 @@ const SignUp: React.FC = (): JSX.Element => {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/register`,
+        "https://hiresphere.onrender.com/api/v1/auth/register",
         {
           email: email,
           password: password,

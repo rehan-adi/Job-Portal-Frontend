@@ -4,27 +4,25 @@ import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { SlLockOpen } from "react-icons/sl"
 import { toast } from "react-hot-toast";
-import ClipLoader from "react-spinners/ClipLoader";
 
 const Login: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/v1/auth/login`,
+        "https://hiresphere.onrender.com/api/v1/auth/login",
         {
           email: email,
           password: password,
         }
       );
+
 
       const token = response.data.token;
       localStorage.setItem("token", token);
@@ -39,9 +37,7 @@ const Login: React.FC = (): JSX.Element => {
       } else {
         toast.error("An unknown error occurred");
       }
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   return (
@@ -97,13 +93,8 @@ const Login: React.FC = (): JSX.Element => {
           <button
               className="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
               type="submit"
-              disabled={loading}
             >
-              {loading ? (
-                <Spinner className="h-5 w-5" />
-              ) : (
-                "Sign In"
-              )}
+             Sign In
             </button>
           </div>
           <button type="button" className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
