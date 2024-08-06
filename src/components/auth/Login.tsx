@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
-import { SlLockOpen } from "react-icons/sl";
+import { SlLockOpen } from "react-icons/sl"
+import { toast } from "react-hot-toast";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Login: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -26,14 +28,19 @@ const Login: React.FC = (): JSX.Element => {
 
       const token = response.data.token;
       localStorage.setItem("token", token);
+      toast.success("Sign in successful!");
       navigate("/");
     } catch (error) {
       console.log(error);
-      if (error instanceof Error) {
-        setError(error.message);
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(`Error: ${error.response.data.message}`);
+      } else if (error instanceof Error) {
+        toast.error(`Error: ${error.message}`);
       } else {
-        setError("An unknown error occurred");
+        toast.error("An unknown error occurred");
       }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -87,11 +94,16 @@ const Login: React.FC = (): JSX.Element => {
             </div>
           </div>
           <div className="flex items-center mt-9 justify-between">
-            <button
+          <button
               className="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
               type="submit"
+              disabled={loading}
             >
-              Sign In
+              {loading ? (
+                <Spinner className="h-5 w-5" />
+              ) : (
+                "Sign In"
+              )}
             </button>
           </div>
           <button type="button" className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
@@ -118,7 +130,6 @@ const Login: React.FC = (): JSX.Element => {
               Sign Up
             </Link>{" "}
           </p>
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         </form>
       </div>
     </div>

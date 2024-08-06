@@ -10,6 +10,7 @@ import Profile from "./components/Profile.tsx";
 import Salary from "./components/Salary.tsx";
 import ProfileDetails from "./components/ProfileDetails.tsx";
 import Banner from "./components/Banner.tsx";
+import { Toaster } from "react-hot-toast";
 
 const App: React.FC = () => {
   const [authenticated, setAuthenticated] = useState(false);
@@ -35,13 +36,14 @@ const App: React.FC = () => {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path="/" element={<Home />}>
           <Route path="/jobs/:id" element={<JobDetail />} />
           <Route index element={<Banner />} />
           <Route path="/postjob" element={<PostJobForm />} />
           <Route path="/createprofile" element={<Profile />} />
-          <Route path="/profile/:id" element={<ProfileDetails />} />
+          {/* <Route path="/profile/:id" element={<ProfileDetails />} /> */}
           <Route path="/salary-estimate" element={<Salary />} />
         </Route>
         <Route path="/signin" element={<Login />} />
