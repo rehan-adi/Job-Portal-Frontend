@@ -3,18 +3,18 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
 import { SlLockOpen } from "react-icons/sl";
+import { toast } from "react-hot-toast";
 
 const SignUp: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);;
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError(null);
 
     try {
       const response = await axios.post(
@@ -28,13 +28,14 @@ const SignUp: React.FC = (): JSX.Element => {
 
       if (response.status === 201) {
         navigate("/signin");
+        toast.success("Sign up successful! You can now sign in.");
       }
     } catch (error) {
       console.log(error);
       if (error instanceof Error) {
-        setError(error.message);
+        toast.error(`Error: ${error.message}`);
       } else {
-        setError("An unknown error occurred");
+        toast.error("An unknown error occurred.");
       }
     }
   };
@@ -137,7 +138,6 @@ const SignUp: React.FC = (): JSX.Element => {
               Sign In
             </Link>{" "}
           </p>
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
         </form>
       </div>
     </div>
