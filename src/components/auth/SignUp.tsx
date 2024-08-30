@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { z } from "zod";
 import axios from "axios";
-import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { toast } from "sonner";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { SlLockOpen } from "react-icons/sl";
-import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { MdOutlineMarkEmailRead } from "react-icons/md";
 
 const SignUp: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState("");
