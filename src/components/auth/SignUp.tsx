@@ -1,6 +1,7 @@
 import { z } from "zod";
 import axios from "axios";
 import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 import { Input } from "../ui/input.tsx";
 import { Button } from "../ui/button.tsx";
 import React, { useState } from "react";
@@ -119,7 +120,14 @@ const SignUp: React.FC = (): JSX.Element => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit" className="w-full"> {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+                  Submitting...
+                </>
+              ) : (
+                "Sign Up"
+              )}</Button>
           </form>
         </Form>
       </div>

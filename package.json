@@ -21,6 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "localforage": "^1.10.0",
+    "lucide-react": "^0.436.0",
     "match-sorter": "^6.3.4",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",
