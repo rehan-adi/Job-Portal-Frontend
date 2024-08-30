@@ -2,35 +2,40 @@ import { z } from "zod";
 import axios from "axios";
 import { toast } from "sonner";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { SlLockOpen } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { signupValidation } from "@/validation/auth.validation.ts";
+
+
+type FormField = z.infer<typeof signupValidation>;
 
 const SignUp: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [role, setRole] = useState("");
 
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormField>({
+    resolver: zodResolver(signupValidation),
+  });
 
+  const onSubmit: SubmitHandler<FormField> = async (data) => {
+    setLoading(true);
     try {
       const response = await axios.post(
         "https://hiresphere.onrender.com/api/v1/auth/register",
-        {
-          email: email,
-          password: password,
-          role: role,
-        }
+        data
       );
 
       if (response.status === 201) {
-        navigate("/signin");
         toast.success("Sign up successful! You can now sign in.");
+        navigate("/signin");
       }
     } catch (error) {
       console.log(error);
@@ -39,6 +44,8 @@ const SignUp: React.FC = (): JSX.Element => {
       } else {
         toast.error("An unknown error occurred.");
       }
+    } finally {
+        setLoading(false);
     }
   };
 
@@ -48,7 +55,7 @@ const SignUp: React.FC = (): JSX.Element => {
         <h2 className="text-3xl font-semibold text-white text-center mb-14">
           Create your HireSphere account
         </h2>
-        <form onSubmit={handleSubmit} className="mb-6">
+        <form onSubmit={handleSubmit(onSubmit)} className="mb-6">
           <div className="w-full">
             <div className="relative w-full min-w-[200px] h-10">
               <div className="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
@@ -59,8 +66,7 @@ const SignUp: React.FC = (): JSX.Element => {
                 id="email"
                 type="email"
                 placeholder=""
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email")}
                 required
                 aria-label="Email"
                 aria-required="true"
@@ -80,8 +86,7 @@ const SignUp: React.FC = (): JSX.Element => {
                 id="password"
                 type="password"
                 placeholder=""
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                {...register("password")}
                 required
                 aria-label="Password"
                 aria-required="true"
@@ -95,8 +100,7 @@ const SignUp: React.FC = (): JSX.Element => {
             <select
               className="peer h-full w-full rounded-[7px] text-white border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-2.5 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 empty:!bg-gray-900 focus:border-2 focus:border-[#EA580C] focus:border-t-transparent focus:outline-0 disabled:border-0"
               id="role"
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
+              {...register("role")}
               required
               aria-required="true"
             >
@@ -105,7 +109,7 @@ const SignUp: React.FC = (): JSX.Element => {
               <option value="employer">employer</option>
             </select>
             <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-white peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:border-[#EA580C] peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:border-[#EA580C] peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
-            Select Your Role
+              Select Your Role
             </label>
           </div>
           <div className="flex items-center mt-9 justify-between">
@@ -113,10 +117,13 @@ const SignUp: React.FC = (): JSX.Element => {
               className="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center font-sans text-sm font-bold text-white transition-all"
               type="submit"
             >
-              Sign Up
+              { loading ? "Sign Up......" : "Sign Up"}
             </button>
           </div>
-          <button type="button" className="w-full  text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
+          <button
+            type="button"
+            className="w-full  text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5"
+          >
             <svg
               stroke="currentColor"
               className="mt-1"
