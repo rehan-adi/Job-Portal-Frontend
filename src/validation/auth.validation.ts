@@ -5,9 +5,8 @@ export const signupValidation = z.object({
   password: z
     .string()
     .min(6, { message: "Password must be at least 6 characters long" }),
-  role: z.enum(["job_seeker", "employer"], {
-    message: "Invalid role specified",
-  }),
+    role: z.enum(["job_seeker", "employer"], {message: "Invalid role"}, )
+    .or(z.literal("")),
 });
 
 export const signinValidation = z.object({
