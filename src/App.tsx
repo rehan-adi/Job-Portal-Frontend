@@ -4,12 +4,12 @@ import Home from "./pages/Home.tsx";
 import Login from "./components/auth/Login.tsx";
 import SignUp from "./components/auth/SignUp.tsx";
 import Banner from "./components/Banner.tsx";
-import { Toaster } from "react-hot-toast";
+import { Toaster } from "./components/ui/sonner.tsx";
 
 const App: React.FC = () => {
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="bottom-right" richColors theme="dark" />
       <Routes>
         <Route path="/" element={<Home />}>
           <Route index element={<Banner />} />
