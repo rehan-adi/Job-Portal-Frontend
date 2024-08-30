@@ -2,27 +2,35 @@ import { z } from "zod";
 import axios from "axios";
 import { toast } from "sonner";
 import React, { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { SlLockOpen } from "react-icons/sl";
 import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { signupValidation } from "@/validation/auth.validation.ts";
-
+import { Input } from "../ui/input.tsx";
+import { Button } from "../ui/button.tsx";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form.tsx";
 
 type FormField = z.infer<typeof signupValidation>;
 
 const SignUp: React.FC = (): JSX.Element => {
-
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormField>({
+  const form = useForm<z.infer<typeof signupValidation>>({
     resolver: zodResolver(signupValidation),
+    defaultValues: {
+      email: "",
+      password: "",
+      role: "",
+    },
   });
 
   const onSubmit: SubmitHandler<FormField> = async (data) => {
@@ -45,7 +53,7 @@ const SignUp: React.FC = (): JSX.Element => {
         toast.error("An unknown error occurred.");
       }
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
 
@@ -55,7 +63,7 @@ const SignUp: React.FC = (): JSX.Element => {
         <h2 className="text-3xl font-semibold text-white text-center mb-14">
           Create your HireSphere account
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} className="mb-6">
+        {/* <form onSubmit={handleSubmit(onSubmit)} className="mb-6">
           <div className="w-full">
             <div className="relative w-full min-w-[200px] h-10">
               <div className="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
@@ -147,7 +155,38 @@ const SignUp: React.FC = (): JSX.Element => {
               Sign In
             </Link>{" "}
           </p>
-        </form>
+        </form> */}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Enter your Password" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
       </div>
     </div>
   );
