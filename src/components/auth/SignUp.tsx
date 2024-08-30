@@ -79,7 +79,7 @@ const SignUp: React.FC = (): JSX.Element => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel className="text-white">Email</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your Email" {...field} />
                   </FormControl>
@@ -92,7 +92,7 @@ const SignUp: React.FC = (): JSX.Element => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Password</FormLabel>
+                  <FormLabel className="text-white">Password</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter your Password" {...field} />
                   </FormControl>
@@ -105,31 +105,43 @@ const SignUp: React.FC = (): JSX.Element => {
               name="role"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Role</FormLabel>
-                  <Select>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Theme" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="light">Light</SelectItem>
-                      <SelectItem value="dark">Dark</SelectItem>
-                      <SelectItem value="system">System</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <FormLabel className="text-white">Role</FormLabel>
+                  <FormControl>
+                    <Select {...field}>
+                      <SelectTrigger className="w-full text-white bg-gray-700 rounded-md">
+                        <SelectValue placeholder="Select your role" />
+                      </SelectTrigger>
+                      <SelectContent className="border border-gray-600 rounded-md">
+                        <SelectItem value="job_seeker">Job Seeker</SelectItem>
+                        <SelectItem value="employer">Employer</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="w-full"> {loading ? (
+            <Button type="submit" variant="outline" className="w-full">
+              {" "}
+              {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
                   Submitting...
                 </>
               ) : (
                 "Sign Up"
-              )}</Button>
+              )}
+            </Button>
           </form>
         </Form>
+        <div className="text-center mt-8">
+          <p className="text-sm font-medium text-white leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+            Already have a account?{" "}
+            <Link to="/signin" className="underline underline-offset-2">
+              Sign in
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );
