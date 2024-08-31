@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { z } from "zod";
 import axios from "axios";
 import { toast } from "sonner";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { signupValidation } from "@/validation/auth.validation.ts";
-import { z } from "zod";
 import { useNavigate } from "react-router-dom";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { signupValidation } from "@/validation/auth.validation.ts";
 
 type FormField = z.infer<typeof signupValidation>;
 
 export const useSignUpForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  
+
   const form = useForm<FormField>({
     resolver: zodResolver(signupValidation),
     defaultValues: {
