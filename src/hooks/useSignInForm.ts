@@ -34,6 +34,7 @@ export const useSignInForm = () => {
         const token = response.data.token;
         localStorage.setItem("token", token);
         toast.success("Sign in successful!");
+        form.reset();
         navigate("/");
       }
     } catch (error) {

@@ -32,6 +32,7 @@ export const useSignUpForm = () => {
 
       if (response.status === 201) {
         toast.success("Sign up successful! You can now sign in.");
+        form.reset();
         navigate("/signin");
       }
     } catch (error) {
