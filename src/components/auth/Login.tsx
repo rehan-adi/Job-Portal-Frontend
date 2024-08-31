@@ -1,127 +1,120 @@
-import axios from "axios";
-import { toast } from "sonner";
-import React, { useState } from "react";
-import { SlLockOpen } from "react-icons/sl"
-import { Link, useNavigate } from "react-router-dom";
+// src/components/Login.tsx
+import React from "react";
+import { Loader2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "../ui/button.tsx";
+import { SlLockOpen } from "react-icons/sl";
 import { MdOutlineMarkEmailRead } from "react-icons/md";
+import { useSignInForm } from "../../hooks/useSignInForm.ts";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form.tsx";
 
 const Login: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    try {
-      const response = await axios.post(
-        "https://hiresphere.onrender.com/api/v1/auth/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
-
-
-      const token = response.data.token;
-      localStorage.setItem("token", token);
-      toast.success("Sign in successful!");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      if (axios.isAxiosError(error) && error.response) {
-        toast.error(`Error: ${error.response.data.message}`);
-      } else if (error instanceof Error) {
-        toast.error(`Error: ${error.message}`);
-      } else {
-        toast.error("An unknown error occurred");
-      }
-    } 
-  };
+  const { form, onSubmit, loading } = useSignInForm();
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-black">
       <div className="rounded-lg lg:w-[28vw] md:w-[45vw] sm:w-[45vw] w-full px-5 py-10">
         <h2 className="text-3xl font-semibold text-white text-center mb-14">
-          Signin to your HireSphere account
+          Sign in to your HireSphere account
         </h2>
-        <form onSubmit={handleSubmit} className="mb-6">
-          <div className="w-full">
-            <div className="relative w-full min-w-[200px] h-10">
-              <div className="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
-                <MdOutlineMarkEmailRead className="text-white text-xl" />
-              </div>
-              <input
-                className="peer w-full h-full bg-transparent text-white  font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
-                id="email"
-                type="email"
-                placeholder=""
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                aria-label="Email"
-                aria-required="true"
-              />
-              <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-white peer-focus:text-white before:border-blue-gray-200 peer-focus:before:!border-[#EA580C] after:border-blue-gray-200 peer-focus:after:!border-[#EA580C]">
-                Email
-              </label>
-            </div>
-          </div>
-          <div className="w-full mt-7">
-            <div className="relative w-full min-w-[200px] h-10">
-              <div className="absolute grid w-5 h-5 place-items-center text-blue-gray-500 top-2/4 right-3 -translate-y-2/4">
-                <SlLockOpen className="text-white text-xl" />
-              </div>
-              <input
-                className="peer w-full h-full bg-transparent text-white font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-5 rounded-[7px] !pr-9 border-blue-gray-200 focus:border-[#EA580C]"
-                id="password"
-                type="password"
-                placeholder=""
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                aria-label="Password"
-                aria-required="true"
-              />
-              <label className="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[11px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-white peer-focus:text-white before:border-blue-gray-200 peer-focus:before:!border-[#EA580C] after:border-blue-gray-200 peer-focus:after:!border-[#EA580C]">
-                Password
-              </label>
-            </div>
-          </div>
-          <div className="flex items-center mt-9 justify-between">
-          <button
-              className="select-none rounded-lg border w-full lg:w-auto border-[#EA580C] hover:bg-[#EA580C] py-2.5 px-10 text-center align-middle font-sans text-sm font-bold text-white transition-all"
-              type="submit"
-            >
-             Sign In
-            </button>
-          </div>
-          <button type="button" className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5">
-            <svg
-              stroke="currentColor"
-              className="mt-1"
-              fill="currentColor"
-              strokeWidth="0"
-              viewBox="0 0 488 512"
-              height="22px"
-              width="15px"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
-            </svg>
-            Sign In with Google
-          </button>
-          <p className="mt-6 text-center text-white">
-            Don't have an account{" "}
-            <Link
-              to="/signup"
-              className="text-[#EA580C] underline text-sm font-semibold hover:underline"
-            >
-              Sign Up
-            </Link>{" "}
-          </p>
-        </form>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="mb-6 space-y-8">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field, fieldState }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Email</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <MdOutlineMarkEmailRead className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white text-xl" />
+                      <input
+                        type="email"
+                        placeholder="Enter your Email"
+                        {...field}
+                        className={`peer w-full h-10 bg-transparent text-white font-sans font-normal outline-none focus:outline-none transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2 rounded-md pr-10 border-blue-gray-200 focus:border-[#EA580C] ${
+                          fieldState.error ? "border-red-500" : ""
+                        }`}
+                        aria-label="Email"
+                        aria-required="true"
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field, fieldState }) => (
+                <FormItem>
+                  <FormLabel className="text-white">Password</FormLabel>
+                  <FormControl>
+                    <div className="relative">
+                      <SlLockOpen className="absolute top-1/2 right-3 transform -translate-y-1/2 text-white text-xl" />
+                      <input
+                        type="password"
+                        placeholder="Enter your Password"
+                        {...field}
+                        className={`peer w-full h-10 bg-transparent text-white font-sans font-normal outline-none focus:outline-none transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 border focus:border-2 border-t-transparent focus:border-t-transparent text-sm px-3 py-2 rounded-md pr-10 border-blue-gray-200 focus:border-[#EA580C] ${
+                          fieldState.error ? "border-red-500" : ""
+                        }`}
+                        aria-label="Password"
+                        aria-required="true"
+                      />
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" variant="outline" className="w-full" disabled={loading}>
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
+                </>
+              ) : (
+                "Sign In"
+              )}
+            </Button>
+          </form>
+        </Form>
+        <button
+          type="button"
+          className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5"
+        >
+          <svg
+            stroke="currentColor"
+            className="mt-1"
+            fill="currentColor"
+            strokeWidth="0"
+            viewBox="0 0 488 512"
+            height="22px"
+            width="15px"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
+          </svg>
+          Sign In with Google
+        </button>
+        <p className="mt-6 text-center text-white">
+          Don't have an account{" "}
+          <Link
+            to="/signup"
+            className="text-[#EA580C] underline text-sm font-semibold hover:underline"
+          >
+            Sign Up
+          </Link>
+        </p>
       </div>
     </div>
   );
