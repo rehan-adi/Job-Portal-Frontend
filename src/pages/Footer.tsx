@@ -19,7 +19,7 @@ const currentYear = new Date().getFullYear();
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-black pt-5 w-full">
+    <footer className="bg-black fixed bottom-0 pt-5 w-full">
       <div className="mx-auto w-full max-w-7xl px-8">
         <div className="grid grid-cols-1 justify-between items-start gap-4 md:grid-cols-2">
           <div className="flex mb-3 lg:mb-0  items-center">

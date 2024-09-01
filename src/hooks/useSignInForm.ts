@@ -35,7 +35,7 @@ export const useSignInForm = () => {
         localStorage.setItem("token", token);
         toast.success("Sign in successful!");
         form.reset();
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error(error);
