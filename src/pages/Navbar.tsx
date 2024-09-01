@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/avatar.tsx";
 
 const Navbar: React.FC = (): JSX.Element => {
-  const router = useNavigate();
+  const navigate = useNavigate();
 
   const onLogout = async () => {
     try {
@@ -30,7 +30,7 @@ const Navbar: React.FC = (): JSX.Element => {
           description: response.data.message || "You have been logged out.",
           duration: 2000,
         });
-        router("/signin");
+        navigate("/signin");
       }
     } catch (error: any) {
       console.error(error);
@@ -43,12 +43,16 @@ const Navbar: React.FC = (): JSX.Element => {
     }
   };
 
+  const goToProfile = () => {
+    navigate("/dashboard/profile");
+  };
+
   return (
     <header className="bg-black text-white border-b border-white border-opacity-15 fixed w-full z-50 py-5 lg:px-32 px-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <img
-            src="https://github.com/mdalmamunit427/mern-job-portal-starter-files/blob/main/public/images/Linear.png?raw=true"
+            src="/images/Logo.png"
             alt="Linear Logo"
             className="h-8 mr-2"
           />
@@ -67,7 +71,7 @@ const Navbar: React.FC = (): JSX.Element => {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
-                <DropdownMenuItem>
+                <DropdownMenuItem onClick={goToProfile}>
                   <User className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                   <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
