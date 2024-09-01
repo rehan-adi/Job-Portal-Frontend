@@ -1,9 +1,8 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.tsx";
 import Login from "./components/auth/Login.tsx";
+import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/auth/SignUp.tsx";
-import Banner from "./components/Banner.tsx";
+import LandingPage from "./components/LandingPage.tsx";
 import { Toaster } from "./components/ui/sonner.tsx";
 
 const App: React.FC = () => {
@@ -11,9 +10,7 @@ const App: React.FC = () => {
     <>
       <Toaster position="bottom-right" richColors theme="dark" />
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route index element={<Banner />} />
-        </Route>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="*" element={<h1>404</h1>} />
