@@ -77,7 +77,7 @@ const Login: React.FC = (): JSX.Element => {
                 </FormItem>
               )}
             />
-            <Button type="submit" variant="outline" className="w-full" disabled={loading}>
+            <Button type="submit" variant="default" size="lg" className="w-full" disabled={loading}>
               {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting...
@@ -88,13 +88,17 @@ const Login: React.FC = (): JSX.Element => {
             </Button>
           </form>
         </Form>
-        <button
-          type="button"
-          className="w-full text-white rounded-md hover:bg-[#212121] duration-300 mt-12 flex justify-center items-center gap-3 font-normal text-sm bg-[#EA580C] py-2 px-5"
-        >
-          <svg
+        <div className="mt-4">
+        <Button
+              type="submit"
+              variant="outline"
+              className="w-full"
+              disabled={loading}
+              size="lg"
+            >
+               <svg
             stroke="currentColor"
-            className="mt-1"
+            className="mt-1 mr-3"
             fill="currentColor"
             strokeWidth="0"
             viewBox="0 0 488 512"
@@ -104,13 +108,14 @@ const Login: React.FC = (): JSX.Element => {
           >
             <path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path>
           </svg>
-          Sign In with Google
-        </button>
+          Sign Up with Google
+        </Button>
+        </div>
         <p className="mt-6 text-center text-white">
           Don't have an account{" "}
           <Link
             to="/signup"
-            className="text-[#EA580C] underline text-sm font-semibold hover:underline"
+            className="text-[#F97316] underline text-sm font-semibold hover:underline"
           >
             Sign Up
           </Link>
