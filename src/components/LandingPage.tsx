@@ -21,10 +21,10 @@ const LandingPage: React.FC = () => {
         and accelerate your career growth today!
       </p>
       <div className="flex gap-4">
-        <Button type="button" variant="primary" size="lg"  onClick={handleGetStarted}>
+        <Button type="button" variant="secondary" size="lg"  onClick={handleGetStarted}>
           Get Started
         </Button>
-        <Button type="button" variant="secondary" size="lg" onClick={handleSignUp}>
+        <Button type="button" variant="default" size="lg" onClick={handleSignUp}>
           Sign Up
         </Button>
       </div>
