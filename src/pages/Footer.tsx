@@ -4,9 +4,9 @@ const currentYear = new Date().getFullYear();
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-black fixed bottom-0 pt-5 w-full">
+    <footer className="bg-black w-full">
       <div className="mx-auto w-full max-w-7xl px-2">
-        <div className="mt-12 flex w-full text-white flex-col items-center justify-center border-t border-white border-opacity-15 py-4 md:flex-row md:justify-between">
+        <div className="flex w-full text-white flex-col items-center justify-center border-t border-white border-opacity-15 py-4 md:flex-row md:justify-between">
           <p className="mb-4 text-center font-normal text-sm md:mb-0">
             &copy; {currentYear}{" "}
             <a href="https://material-tailwind.com/">HireSphere Inc</a>. All
