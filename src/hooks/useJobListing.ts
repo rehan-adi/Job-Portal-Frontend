@@ -2,8 +2,19 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useState, useEffect } from "react";
 
+interface JobListing {
+  id: string;
+  title: string;
+  employer: string;
+  description: string;
+  requirements: string[];
+  location: string;
+  salaryRange: string;
+  category: string;
+}
+
 export const useJobListing = () => {
-  const [jobListings, setJobListings] = useState([]);
+  const [jobListings, setJobListings] = useState<JobListing[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -12,6 +23,7 @@ export const useJobListing = () => {
         const response = await axios.get(
           "https://hiresphere.onrender.com/api/v1/job-listing/get"
         );
+        
         if (response.status === 200) {
           setJobListings(response.data);
           toast.success("Job listings fetched successfully.");
