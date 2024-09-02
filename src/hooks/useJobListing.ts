@@ -21,8 +21,10 @@ export const useJobListing = () => {
     const fetchJobListings = async () => {
       try {
         const response = await axios.get(
-          "https://hiresphere.onrender.com/api/v1/job-listing/get"
+          "http://localhost:1000/api/v1/job-listing/get"
         );
+
+        console.log('API Response:', response.data);
         
         if (response.status === 200) {
           setJobListings(response.data);

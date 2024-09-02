@@ -26,7 +26,7 @@ export const useSignUpForm = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        "https://hiresphere.onrender.com/api/v1/auth/register",
+        "http://localhost:1000/api/v1/auth/register",
         data
       );
 
