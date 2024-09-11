@@ -1,3 +1,4 @@
+import { Loader2 } from "lucide-react";
 import { Button } from "./ui/button.tsx";
 import { useJobListing } from "@/hooks/useJobListing.ts";
 import {
@@ -15,7 +16,10 @@ const JobListing = () => {
   return (
     <div className="min-h-screen bg-black text-white py-12 px-6">
       {loading ? (
-        "Loading..."
+        <div className="h-screen flex justify-center items-center">
+          <Loader2 className="h-7 w-7 animate-spin mr-3"/> 
+          <p className="text-center text-sm">Loading job listings...</p>
+        </div>
       ) : Array.isArray(jobListings) && jobListings.length > 0 ? (
         <div className="max-w-7xl mt-12 mx-auto">
           <h1 className="text-4xl font-bold mb-10 text-center">Job Listings</h1>
