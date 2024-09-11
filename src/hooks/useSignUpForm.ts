@@ -35,13 +35,15 @@ export const useSignUpForm = () => {
         form.reset();
         navigate("/signin");
       }
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
-      if (error instanceof Error) {
-        toast.error(`Error: ${error.message}`);
-      } else {
-        toast.error("An unknown error occurred.");
-      }
+      const message =
+      error.response?.data?.message ||
+      "An error occurred. Please try again.";
+    toast.error("Failed to register", {
+      description: message,
+      duration: 2000,
+    });
     } finally {
       setLoading(false);
     }
