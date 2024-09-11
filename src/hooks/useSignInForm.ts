@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { setToken } from "@/utils/localStorage.ts";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { signinValidation } from "@/validation/auth.validation.ts";
@@ -32,7 +33,7 @@ export const useSignInForm = () => {
 
       if (response.status === 200) {
         const token = response.data.token;
-        localStorage.setItem("token", token);
+        setToken(token);
         toast.success("Sign in successful!");
         form.reset();
         navigate("/dashboard");
