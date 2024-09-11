@@ -1,12 +1,12 @@
-import React, { Profiler } from "react";
+import React from "react";
+import Profile from "./components/Profile.tsx";
 import Login from "./components/auth/Login.tsx";
 import { Route, Routes } from "react-router-dom";
 import SignUp from "./components/auth/SignUp.tsx";
-import LandingPage from "./components/LandingPage.tsx";
-import { Toaster } from "./components/ui/sonner.tsx";
 import Dashboard from "./components/Dashboard.tsx";
-import Profile from "./components/Profile.tsx";
 import JobListing from "./components/JobListing.tsx";
+import { Toaster } from "./components/ui/sonner.tsx";
+import LandingPage from "./components/LandingPage.tsx";
 
 const App: React.FC = () => {
   return (

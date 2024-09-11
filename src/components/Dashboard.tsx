@@ -1,6 +1,6 @@
-import Footer from "@/pages/Footer.tsx"
-import Navbar from "@/pages/Navbar.tsx"
 import { Outlet } from "react-router-dom"
+import Footer from "@/components/Footer.tsx"
+import Navbar from "@/components/Footer.tsx"
 
 const Dashboard = () => {
   return (
