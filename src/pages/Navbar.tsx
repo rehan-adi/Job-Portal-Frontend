@@ -24,7 +24,7 @@ const Navbar: React.FC = (): JSX.Element => {
 
   const onLogout = async () => {
     try {
-      const response = await axios.post("/api/logout");
+      const response = await axios.post("http://localhost:1000/api/v1/auth/logout");
       if (response.status === 200) {
         toast.success("Logout successful", {
           description: response.data.message || "You have been logged out.",
