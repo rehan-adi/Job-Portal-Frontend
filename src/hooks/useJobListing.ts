@@ -9,7 +9,7 @@ interface JobListing {
   description: string;
   requirements: string[];
   location: string;
-  salaryRange: string;
+  salaryRange: string | { min: number; max: number };
   category: string;
 }
 
@@ -23,11 +23,9 @@ export const useJobListing = () => {
         const response = await axios.get(
           "http://localhost:1000/api/v1/job-listing/get"
         );
-
-        console.log('API Response:', response.data);
         
         if (response.status === 200) {
-          setJobListings(response.data);
+          setJobListings(response.data.data);
           toast.success("Job listings fetched successfully.");
         }
       } catch (error) {

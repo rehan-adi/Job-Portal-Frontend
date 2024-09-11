@@ -46,7 +46,10 @@ const JobListing = () => {
                     Location: {job.location}
                   </span>
                   <span className="text-[#9CA3AF] text-base font-medium">
-                    Salary: {job.salaryRange}
+                    Salary:
+                    {typeof job.salaryRange === "object"
+                      ? `${job.salaryRange.min} - ${job.salaryRange.max}`
+                      : job.salaryRange}
                   </span>
                   <span className="text-[#9CA3AF] text-base font-medium">
                     Category: {job.category}
